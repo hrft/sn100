@@ -6,6 +6,8 @@ from snl100.data_loader import generate_sample_data
 def test_buy_signal():
     df = generate_sample_data("up", periods=60)
     result = generate_signal(df)
+    print("📊 خروجی سیگنال:", result)
+
     assert isinstance(result, dict)
     assert result["signal"] == "buy"
     assert result["entry"] is not None
@@ -15,6 +17,8 @@ def test_buy_signal():
 def test_sell_signal():
     df = generate_sample_data("down", periods=60)
     result = generate_signal(df)
+    print("📊 خروجی سیگنال:", result)
+
     assert result["signal"] == "sell"
     assert result["entry"] is not None
     assert result["stop"] > result["entry"]
@@ -23,6 +27,8 @@ def test_sell_signal():
 def test_no_signal():
     df = generate_sample_data("flat", periods=60)
     result = generate_signal(df)
+    print("📊 خروجی سیگنال:", result)
+
     assert result["signal"] is None
     assert result["entry"] is None
     assert result["stop"] is None

@@ -12,18 +12,13 @@ def load_from_csv(filepath):
 
 
 def generate_sample_data(trend="up", periods=60):
-    """
-    تولید داده تستی برای روند صعودی، نزولی یا خنثی
-    """
     base = 100
     if trend == "up":
-        close = [base + i for i in range(periods)]
-        volume = [100]*periods
-        volume[-1] = 500  # حجم بالا در کندل آخر
+        close = [base + i for i in range(periods - 1)] + [base + periods + 10]  # جهش در آخر
+        volume = [100]*(periods - 1) + [500]  # حجم بالا در آخر
     elif trend == "down":
-        close = [base - i for i in range(periods)]
-        volume = [100]*periods
-        volume[-1] = 500
+        close = [base - i for i in range(periods - 1)] + [base - periods - 10]
+        volume = [100]*(periods - 1) + [500]
     else:
         close = [base]*periods
         volume = [100]*periods

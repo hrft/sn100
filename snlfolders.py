@@ -1,6 +1,6 @@
 import os
 
-BASE = "snl100"
+BASE = "sn100"
 
 folders = [
     "data",
@@ -12,7 +12,7 @@ folders = [
 ]
 
 files = {
-    "README.md": "# snl100: Signal Engine Project\n",
+    "README.md": "# sn100: Signal Engine Project\n",
     "requirements.txt": "pandas\nmatplotlib\n",
     f"{BASE}/__init__.py": "",
     f"{BASE}/signal_engine.py": "# Signal generation logic\n",
@@ -33,5 +33,5 @@ for path, content in files.items():
     with open(path, "w", encoding="utf-8") as f:
         f.write(content)
 
-print("✅ ساختار پروژه snl100 با موفقیت ایجاد شد.")
+print("✅ ساختار پروژه sn100 با موفقیت ایجاد شد.")
 
