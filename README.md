@@ -1,2 +1,1 @@
-# snl100
-سیگنال ۱۰۰
+# snl100: Signal Engine Project
