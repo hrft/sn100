@@ -38,5 +38,7 @@ def generate_signal(df):
             target = round(entry - (stop - entry), 2)
             return {"signal": "sell", "entry": entry, "stop": stop, "target": target}
 
+    print(f"🔎 بررسی {df.iloc[-1]['Date']}: Close={last['Close']}, MA50={last['MA50']}, High20={prev20['High'].max()}, Low20={prev20['Low'].min()}, Vol={last['Volume']}, VolMA20={last['VolMA20']}")
+
     return {"signal": None, "entry": None, "stop": None, "target": None}
 
