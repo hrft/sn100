@@ -2,7 +2,7 @@ key,value
 Time,now
 Symbol,SOLUSDT
 Signal,entry
-Entry,222.61450000000002
-Stop,218.1622
-Target,229.2929
+Entry,211.44650000000001
+Stop,207.2176
+Target,217.7899
 Chart,SOLUSDT_chart.html
