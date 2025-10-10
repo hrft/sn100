@@ -1,0 +1,8 @@
+key,value
+Time,now
+Symbol,ETHUSDT
+Signal,entry
+Entry,4370.195
+Stop,4282.7911
+Target,4501.3008
+Chart,ETHUSDT_chart.html

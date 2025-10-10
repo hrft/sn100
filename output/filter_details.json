@@ -1,0 +1,86 @@
+[
+  {
+    "market": "BTCUSDT",
+    "ok": true,
+    "reason": "orderbook_only",
+    "metrics": {
+      "top_bid_sum_quote": 5091.40766198,
+      "top_ask_sum_quote": 17320.40640245,
+      "top_quote_total": 22411.81406443,
+      "mid_price": 121999.5,
+      "bid_depth_price_range": 0.004783301880063789,
+      "ask_depth_price_range": 0.0024784426229507816
+    },
+    "top_quote": 22411.81406443
+  },
+  {
+    "market": "ETHUSDT",
+    "ok": true,
+    "reason": "orderbook_only",
+    "metrics": {
+      "top_bid_sum_quote": 6397.377062700001,
+      "top_ask_sum_quote": 16941.4988122,
+      "top_quote_total": 23338.8758749,
+      "mid_price": 4370.195,
+      "bid_depth_price_range": 0.0023437966291567467,
+      "ask_depth_price_range": 0.0017786922725193748
+    },
+    "top_quote": 23338.8758749
+  },
+  {
+    "market": "XRPUSDT",
+    "ok": true,
+    "reason": "orderbook_only",
+    "metrics": {
+      "top_bid_sum_quote": 2506.5204739999995,
+      "top_ask_sum_quote": 11300.464629000002,
+      "top_quote_total": 13806.985103,
+      "mid_price": 2.825755,
+      "bid_depth_price_range": 0.0033309633842871153,
+      "ask_depth_price_range": 0.003131693730250135
+    },
+    "top_quote": 13806.985103
+  },
+  {
+    "market": "SOLUSDT",
+    "ok": true,
+    "reason": "orderbook_only",
+    "metrics": {
+      "top_bid_sum_quote": 4056.2712730000003,
+      "top_ask_sum_quote": 16228.941470999998,
+      "top_quote_total": 20285.212743999997,
+      "mid_price": 222.61450000000002,
+      "bid_depth_price_range": 0.005101671938544919,
+      "ask_depth_price_range": 0.005385996409335676
+    },
+    "top_quote": 20285.212743999997
+  },
+  {
+    "market": "BNBUSDT",
+    "ok": true,
+    "reason": "orderbook_only",
+    "metrics": {
+      "top_bid_sum_quote": 6765.7051236,
+      "top_ask_sum_quote": 8169.746441300002,
+      "top_quote_total": 14935.451564900002,
+      "mid_price": 1263.8696,
+      "bid_depth_price_range": 0.009349323584023976,
+      "ask_depth_price_range": 0.007848245159629159
+    },
+    "top_quote": 14935.451564900002
+  },
+  {
+    "market": "DOGEUSDT",
+    "ok": true,
+    "reason": "orderbook_only",
+    "metrics": {
+      "top_bid_sum_quote": 8787.674667899999,
+      "top_ask_sum_quote": 4770.7422992,
+      "top_quote_total": 13558.416967099998,
+      "mid_price": 0.2522778,
+      "bid_depth_price_range": 0.01312540192926048,
+      "ask_depth_price_range": 0.001980276446591946
+    },
+    "top_quote": 13558.416967099998
+  }
+]

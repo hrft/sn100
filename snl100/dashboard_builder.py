@@ -1,42 +1,94 @@
-import pandas as pd
 import os
+import csv
+from pathlib import Path
 
-def build_dashboard_html(signal_dir="output/signals", chart_dir="output", output_file="output/dashboard.html"):
+def build_dashboard_html(output_dir="output", dashboard_file="dashboard.html"):
+    signal_files = list(Path(output_dir).glob("*_signal.csv"))
     rows = []
-    for file in os.listdir(signal_dir):
-        if file.endswith("_signal.csv"):
-            df = pd.read_csv(os.path.join(signal_dir, file))
-            latest = df.iloc[-1]
-            symbol = latest["symbol"]
-            chart_link = f"{symbol}_chart.html"
-            rows.append(f"""
-                <tr>
-                    <td>{latest['time']}</td>
-                    <td>{symbol}</td>
-                    <td>{latest['signal']}</td>
-                    <td>{latest['entry']}</td>
-                    <td>{latest['stop']}</td>
-                    <td>{latest['target']}</td>
-                    <td><a href="{chart_link}" target="_blank">📈 View</a></td>
-                </tr>
-            """)
 
-    html = f"""
+    for file in signal_files:
+        try:
+            with open(file, encoding="utf-8") as f:
+                reader = csv.reader(f)
+                lines = list(reader)
+        except Exception as e:
+            print(f"⚠️ خطا در خواندن {file}: {e}")
+            continue
+
+        # اگر فایل ساختار key,value دارد
+        if len(lines) > 0 and lines[0] == ["key", "value"]:
+            data = dict(lines[1:])
+            row = {
+                "Time": data.get("Time", ""),
+                "Symbol": data.get("Symbol", Path(file).stem.replace("_signal", "")),
+                "Signal": data.get("Signal", data.get("strategy", "")),
+                "Entry": data.get("Entry", data.get("mid_price", "")),
+                "Stop": data.get("Stop", ""),
+                "Target": data.get("Target", ""),
+                "Chart": data.get("Chart", "")
+            }
+            rows.append(row)
+
+        # اگر فایل ساختار جدولی دارد
+        elif len(lines) > 0 and "Symbol" in lines[0]:
+            headers = lines[0]
+            for line in lines[1:]:
+                row = dict(zip(headers, line))
+                rows.append(row)
+
+        else:
+            print(f"⚠️ ساختار نامشخص در {file}, رد شد.")
+            continue
+
+    # ساخت HTML
+    html = """
     <html>
-    <head><title>SNL100 Dashboard</title></head>
+    <head>
+        <title>Signal Dashboard</title>
+        <style>
+            body { font-family: sans-serif; padding: 20px; background: #f4f4f4; }
+            h1 { color: #333; }
+            table { border-collapse: collapse; width: 100%; background: #fff; }
+            th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
+            th { background: #eee; }
+            tr:hover { background: #f9f9f9; }
+        </style>
+    </head>
     <body>
-        <h2>📊 Signal Dashboard</h2>
-        <table border="1" cellpadding="5">
+        <h1>Signal Dashboard</h1>
+        <table>
             <tr>
-                <th>Time</th><th>Symbol</th><th>Signal</th><th>Entry</th><th>Stop</th><th>Target</th><th>Chart</th>
+                <th>Time</th>
+                <th>Symbol</th>
+                <th>Signal</th>
+                <th>Entry</th>
+                <th>Stop</th>
+                <th>Target</th>
+                <th>Chart</th>
             </tr>
-            {''.join(rows)}
+    """
+
+    for r in rows:
+        html += f"""
+        <tr>
+            <td>{r.get('Time','')}</td>
+            <td>{r.get('Symbol','')}</td>
+            <td>{r.get('Signal','')}</td>
+            <td>{r.get('Entry','')}</td>
+            <td>{r.get('Stop','')}</td>
+            <td>{r.get('Target','')}</td>
+            <td><a href="{r.get('Chart','')}" target="_blank">View</a></td>
+        </tr>
+        """
+
+    html += """
         </table>
     </body>
     </html>
     """
 
-    with open(output_file, "w") as f:
+    with open(os.path.join(output_dir, dashboard_file), "w", encoding="utf-8") as f:
         f.write(html)
-    print(f"✅ داشبورد ساخته شد: {output_file}")
+
+    print(f"✅ داشبورد ساخته شد: {os.path.join(output_dir, dashboard_file)}")
 

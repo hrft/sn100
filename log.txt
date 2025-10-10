@@ -1,164 +1,5 @@
-DEBUG nobitex /v3/candles returned 404 for params {'market': 'BTCUSDT', 'interval': '60', 'limit': 500} snippet 
-<!doctype html>
-<html lang="en">
-<head>
-  <title>Not Found</title>
-</head>
-<body>
-  <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/trades returned 404 for params {'market': 'BTCUSDT', 'interval': '60', 'limit': 500} snippet 
-<!doctype html>
-<html lang="en">
-<head>
-  <title>Not Found</title>
-</head>
-<body>
-  <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/history returned 404 for params {'market': 'BTCUSDT', 'interval': '60', 'limit': 500} snippet 
-<!doctype html>
-<html lang="en">
-<head>
-  <title>Not Found</title>
-</head>
-<body>
-  <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/market/trades returned 404 for params {'market': 'BTCUSDT', 'interval': '60', 'limit': 500} snippet 
-<!doctype html>
-<html lang="en">
-<head>
-  <title>Not Found</title>
-</head>
-<body>
-  <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/market/candles returned 404 for params {'market': 'BTCUSDT', 'interval': '60', 'limit': 500} snippet 
-<!doctype html>
-<html lang="en">
-<head>
-  <title>Not Found</title>
-</head>
-<body>
-  <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/candles returned 404 for params {'market': 'BTCUSDT', 'from': 1759161564, 'to': 1760025564, 'limit': 500} snippet 
-<!doctype html>
-<html lang="en">
-<head>
-  <title>Not Found</title>
-</head>
-<body>
-  <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/trades returned 404 for params {'market': 'BTCUSDT', 'from': 1759161564, 'to': 1760025564, 'limit': 500} snippet 
-<!doctype html>
-<html lang="en">
-<head>
-  <title>Not Found</title>
-</head>
-<body>
-  <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/history returned 404 for params {'market': 'BTCUSDT', 'from': 1759161564, 'to': 1760025564, 'limit': 500} snippet 
-<!doctype html>
-<html lang="en">
-<head>
-  <title>Not Found</title>
-</head>
-<body>
-  <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/market/trades returned 404 for params {'market': 'BTCUSDT', 'from': 1759161564, 'to': 1760025564, 'limit': 500} snippet 
-<!doctype html>
-<html lang="en">
-<head>
-  <title>Not Found</title>
-</head>
-<body>
-  <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/market/candles returned 404 for params {'market': 'BTCUSDT', 'from': 1759161564, 'to': 1760025564, 'limit': 500} snippet 
-<!doctype html>
-<html lang="en">
-<head>
-  <title>Not Found</title>
-</head>
-<body>
-  <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/candles returned 404 for params {'symbol': 'BTCUSDT', 'resolution': '60', 'from': 1759161564, 'to': 1760025564} snippet 
-<!doctype html>
-<html lang="en">
-<head>
-  <title>Not Found</title>
-</head>
-<body>
-  <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/trades returned 404 for params {'symbol': 'BTCUSDT', 'resolution': '60', 'from': 1759161564, 'to': 1760025564} snippet 
-<!doctype html>
-<html lang="en">
-<head>
-  <title>Not Found</title>
-</head>
-<body>
-  <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/history returned 404 for params {'symbol': 'BTCUSDT', 'resolution': '60', 'from': 1759161564, 'to': 1760025564} snippet 
-<!doctype html>
-<html lang="en">
-<head>
-  <title>Not Found</title>
-</head>
-<body>
-  <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/market/trades returned 404 for params {'symbol': 'BTCUSDT', 'resolution': '60', 'from': 1759161564, 'to': 1760025564} snippet 
-<!doctype html>
-<html lang="en">
-<head>
-  <title>Not Found</title>
-</head>
-<body>
-  <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/market/candles returned 404 for params {'symbol': 'BTCUSDT', 'resolution': '60', 'from': 1759161564, 'to': 1760025564} snippet 
-<!doctype html>
-<html lang="en">
-<head>
-  <title>Not Found</title>
-</head>
-<body>
-  <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/candles returned 404 for params {'symbol': 'BTCUSDT', 'limit': 500} snippet 
-<!doctype html>
-<html lang="en">
-<head>
-  <title>Not Found</title>
-</head>
-<body>
-  <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/trades returned 404 for params {'symbol': 'BTCUSDT', 'limit': 500} snippet 
-<!doctype html>
-<html lang="en">
-<head>
-  <title>Not Found</title>
-</head>
-<body>
-  <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/history returned 404 for params {'symbol': 'BTCUSDT', 'limit': 500} snippet 
-<!doctype html>
-<html lang="en">
-<head>
-  <title>Not Found</title>
-</head>
-<body>
-  <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/market/trades returned 404 for params {'symbol': 'BTCUSDT', 'limit': 500} snippet 
-<!doctype html>
-<html lang="en">
-<head>
-  <title>Not Found</title>
-</head>
-<body>
-  <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/market/candles returned 404 for params {'symbol': 'BTCUSDT', 'limit': 500} snippet 
-<!doctype html>
-<html lang="en">
-<head>
-  <title>Not Found</title>
-</head>
-<body>
-  <h1>Not Found</h1><p>The requested resource was not found on this server.</
-⚠️ کندل برای BTCUSDT دردسترس نیست؛ انتخاب بر اساس orderbook (fallback) انجام شد.
+❌ نقدشوندگی کم برای BTCUSDT: top_quote=11838.57 < 15000
+⛔ رد شد BTCUSDT با آستانه 15000 دلیل: low_liquidity: top_quote=11838.57 < 15000
 DEBUG nobitex /v3/candles returned 404 for params {'market': 'ETHUSDT', 'interval': '60', 'limit': 500} snippet 
 <!doctype html>
 <html lang="en">
@@ -199,7 +40,7 @@ DEBUG nobitex /v3/market/candles returned 404 for params {'market': 'ETHUSDT', '
 </head>
 <body>
   <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/candles returned 404 for params {'market': 'ETHUSDT', 'from': 1759161573, 'to': 1760025573, 'limit': 500} snippet 
+DEBUG nobitex /v3/candles returned 404 for params {'market': 'ETHUSDT', 'from': 1759236525, 'to': 1760100525, 'limit': 500} snippet 
 <!doctype html>
 <html lang="en">
 <head>
@@ -207,7 +48,7 @@ DEBUG nobitex /v3/candles returned 404 for params {'market': 'ETHUSDT', 'from': 
 </head>
 <body>
   <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/trades returned 404 for params {'market': 'ETHUSDT', 'from': 1759161573, 'to': 1760025573, 'limit': 500} snippet 
+DEBUG nobitex /v3/trades returned 404 for params {'market': 'ETHUSDT', 'from': 1759236525, 'to': 1760100525, 'limit': 500} snippet 
 <!doctype html>
 <html lang="en">
 <head>
@@ -215,7 +56,7 @@ DEBUG nobitex /v3/trades returned 404 for params {'market': 'ETHUSDT', 'from': 1
 </head>
 <body>
   <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/history returned 404 for params {'market': 'ETHUSDT', 'from': 1759161573, 'to': 1760025573, 'limit': 500} snippet 
+DEBUG nobitex /v3/history returned 404 for params {'market': 'ETHUSDT', 'from': 1759236525, 'to': 1760100525, 'limit': 500} snippet 
 <!doctype html>
 <html lang="en">
 <head>
@@ -223,7 +64,7 @@ DEBUG nobitex /v3/history returned 404 for params {'market': 'ETHUSDT', 'from': 
 </head>
 <body>
   <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/market/trades returned 404 for params {'market': 'ETHUSDT', 'from': 1759161573, 'to': 1760025573, 'limit': 500} snippet 
+DEBUG nobitex /v3/market/trades returned 404 for params {'market': 'ETHUSDT', 'from': 1759236525, 'to': 1760100525, 'limit': 500} snippet 
 <!doctype html>
 <html lang="en">
 <head>
@@ -231,7 +72,7 @@ DEBUG nobitex /v3/market/trades returned 404 for params {'market': 'ETHUSDT', 'f
 </head>
 <body>
   <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/market/candles returned 404 for params {'market': 'ETHUSDT', 'from': 1759161573, 'to': 1760025573, 'limit': 500} snippet 
+DEBUG nobitex /v3/market/candles returned 404 for params {'market': 'ETHUSDT', 'from': 1759236525, 'to': 1760100525, 'limit': 500} snippet 
 <!doctype html>
 <html lang="en">
 <head>
@@ -239,7 +80,7 @@ DEBUG nobitex /v3/market/candles returned 404 for params {'market': 'ETHUSDT', '
 </head>
 <body>
   <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/candles returned 404 for params {'symbol': 'ETHUSDT', 'resolution': '60', 'from': 1759161573, 'to': 1760025573} snippet 
+DEBUG nobitex /v3/candles returned 404 for params {'symbol': 'ETHUSDT', 'resolution': '60', 'from': 1759236525, 'to': 1760100525} snippet 
 <!doctype html>
 <html lang="en">
 <head>
@@ -247,7 +88,7 @@ DEBUG nobitex /v3/candles returned 404 for params {'symbol': 'ETHUSDT', 'resolut
 </head>
 <body>
   <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/trades returned 404 for params {'symbol': 'ETHUSDT', 'resolution': '60', 'from': 1759161573, 'to': 1760025573} snippet 
+DEBUG nobitex /v3/trades returned 404 for params {'symbol': 'ETHUSDT', 'resolution': '60', 'from': 1759236525, 'to': 1760100525} snippet 
 <!doctype html>
 <html lang="en">
 <head>
@@ -255,7 +96,7 @@ DEBUG nobitex /v3/trades returned 404 for params {'symbol': 'ETHUSDT', 'resoluti
 </head>
 <body>
   <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/history returned 404 for params {'symbol': 'ETHUSDT', 'resolution': '60', 'from': 1759161573, 'to': 1760025573} snippet 
+DEBUG nobitex /v3/history returned 404 for params {'symbol': 'ETHUSDT', 'resolution': '60', 'from': 1759236525, 'to': 1760100525} snippet 
 <!doctype html>
 <html lang="en">
 <head>
@@ -263,7 +104,7 @@ DEBUG nobitex /v3/history returned 404 for params {'symbol': 'ETHUSDT', 'resolut
 </head>
 <body>
   <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/market/trades returned 404 for params {'symbol': 'ETHUSDT', 'resolution': '60', 'from': 1759161573, 'to': 1760025573} snippet 
+DEBUG nobitex /v3/market/trades returned 404 for params {'symbol': 'ETHUSDT', 'resolution': '60', 'from': 1759236525, 'to': 1760100525} snippet 
 <!doctype html>
 <html lang="en">
 <head>
@@ -271,7 +112,7 @@ DEBUG nobitex /v3/market/trades returned 404 for params {'symbol': 'ETHUSDT', 'r
 </head>
 <body>
   <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/market/candles returned 404 for params {'symbol': 'ETHUSDT', 'resolution': '60', 'from': 1759161573, 'to': 1760025573} snippet 
+DEBUG nobitex /v3/market/candles returned 404 for params {'symbol': 'ETHUSDT', 'resolution': '60', 'from': 1759236525, 'to': 1760100525} snippet 
 <!doctype html>
 <html lang="en">
 <head>
@@ -360,7 +201,7 @@ DEBUG nobitex /v3/market/candles returned 404 for params {'market': 'XRPUSDT', '
 </head>
 <body>
   <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/candles returned 404 for params {'market': 'XRPUSDT', 'from': 1759161580, 'to': 1760025580, 'limit': 500} snippet 
+DEBUG nobitex /v3/candles returned 404 for params {'market': 'XRPUSDT', 'from': 1759236531, 'to': 1760100531, 'limit': 500} snippet 
 <!doctype html>
 <html lang="en">
 <head>
@@ -368,7 +209,7 @@ DEBUG nobitex /v3/candles returned 404 for params {'market': 'XRPUSDT', 'from': 
 </head>
 <body>
   <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/trades returned 404 for params {'market': 'XRPUSDT', 'from': 1759161580, 'to': 1760025580, 'limit': 500} snippet 
+DEBUG nobitex /v3/trades returned 404 for params {'market': 'XRPUSDT', 'from': 1759236531, 'to': 1760100531, 'limit': 500} snippet 
 <!doctype html>
 <html lang="en">
 <head>
@@ -376,7 +217,7 @@ DEBUG nobitex /v3/trades returned 404 for params {'market': 'XRPUSDT', 'from': 1
 </head>
 <body>
   <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/history returned 404 for params {'market': 'XRPUSDT', 'from': 1759161580, 'to': 1760025580, 'limit': 500} snippet 
+DEBUG nobitex /v3/history returned 404 for params {'market': 'XRPUSDT', 'from': 1759236531, 'to': 1760100531, 'limit': 500} snippet 
 <!doctype html>
 <html lang="en">
 <head>
@@ -384,7 +225,7 @@ DEBUG nobitex /v3/history returned 404 for params {'market': 'XRPUSDT', 'from': 
 </head>
 <body>
   <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/market/trades returned 404 for params {'market': 'XRPUSDT', 'from': 1759161580, 'to': 1760025580, 'limit': 500} snippet 
+DEBUG nobitex /v3/market/trades returned 404 for params {'market': 'XRPUSDT', 'from': 1759236531, 'to': 1760100531, 'limit': 500} snippet 
 <!doctype html>
 <html lang="en">
 <head>
@@ -392,7 +233,7 @@ DEBUG nobitex /v3/market/trades returned 404 for params {'market': 'XRPUSDT', 'f
 </head>
 <body>
   <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/market/candles returned 404 for params {'market': 'XRPUSDT', 'from': 1759161580, 'to': 1760025580, 'limit': 500} snippet 
+DEBUG nobitex /v3/market/candles returned 404 for params {'market': 'XRPUSDT', 'from': 1759236531, 'to': 1760100531, 'limit': 500} snippet 
 <!doctype html>
 <html lang="en">
 <head>
@@ -400,7 +241,7 @@ DEBUG nobitex /v3/market/candles returned 404 for params {'market': 'XRPUSDT', '
 </head>
 <body>
   <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/candles returned 404 for params {'symbol': 'XRPUSDT', 'resolution': '60', 'from': 1759161580, 'to': 1760025580} snippet 
+DEBUG nobitex /v3/candles returned 404 for params {'symbol': 'XRPUSDT', 'resolution': '60', 'from': 1759236531, 'to': 1760100531} snippet 
 <!doctype html>
 <html lang="en">
 <head>
@@ -408,7 +249,7 @@ DEBUG nobitex /v3/candles returned 404 for params {'symbol': 'XRPUSDT', 'resolut
 </head>
 <body>
   <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/trades returned 404 for params {'symbol': 'XRPUSDT', 'resolution': '60', 'from': 1759161580, 'to': 1760025580} snippet 
+DEBUG nobitex /v3/trades returned 404 for params {'symbol': 'XRPUSDT', 'resolution': '60', 'from': 1759236531, 'to': 1760100531} snippet 
 <!doctype html>
 <html lang="en">
 <head>
@@ -416,7 +257,7 @@ DEBUG nobitex /v3/trades returned 404 for params {'symbol': 'XRPUSDT', 'resoluti
 </head>
 <body>
   <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/history returned 404 for params {'symbol': 'XRPUSDT', 'resolution': '60', 'from': 1759161580, 'to': 1760025580} snippet 
+DEBUG nobitex /v3/history returned 404 for params {'symbol': 'XRPUSDT', 'resolution': '60', 'from': 1759236531, 'to': 1760100531} snippet 
 <!doctype html>
 <html lang="en">
 <head>
@@ -424,7 +265,7 @@ DEBUG nobitex /v3/history returned 404 for params {'symbol': 'XRPUSDT', 'resolut
 </head>
 <body>
   <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/market/trades returned 404 for params {'symbol': 'XRPUSDT', 'resolution': '60', 'from': 1759161580, 'to': 1760025580} snippet 
+DEBUG nobitex /v3/market/trades returned 404 for params {'symbol': 'XRPUSDT', 'resolution': '60', 'from': 1759236531, 'to': 1760100531} snippet 
 <!doctype html>
 <html lang="en">
 <head>
@@ -432,7 +273,7 @@ DEBUG nobitex /v3/market/trades returned 404 for params {'symbol': 'XRPUSDT', 'r
 </head>
 <body>
   <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/market/candles returned 404 for params {'symbol': 'XRPUSDT', 'resolution': '60', 'from': 1759161580, 'to': 1760025580} snippet 
+DEBUG nobitex /v3/market/candles returned 404 for params {'symbol': 'XRPUSDT', 'resolution': '60', 'from': 1759236531, 'to': 1760100531} snippet 
 <!doctype html>
 <html lang="en">
 <head>
@@ -521,7 +362,7 @@ DEBUG nobitex /v3/market/candles returned 404 for params {'market': 'SOLUSDT', '
 </head>
 <body>
   <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/candles returned 404 for params {'market': 'SOLUSDT', 'from': 1759161586, 'to': 1760025586, 'limit': 500} snippet 
+DEBUG nobitex /v3/candles returned 404 for params {'market': 'SOLUSDT', 'from': 1759236537, 'to': 1760100537, 'limit': 500} snippet 
 <!doctype html>
 <html lang="en">
 <head>
@@ -529,7 +370,7 @@ DEBUG nobitex /v3/candles returned 404 for params {'market': 'SOLUSDT', 'from': 
 </head>
 <body>
   <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/trades returned 404 for params {'market': 'SOLUSDT', 'from': 1759161586, 'to': 1760025586, 'limit': 500} snippet 
+DEBUG nobitex /v3/trades returned 404 for params {'market': 'SOLUSDT', 'from': 1759236537, 'to': 1760100537, 'limit': 500} snippet 
 <!doctype html>
 <html lang="en">
 <head>
@@ -537,7 +378,7 @@ DEBUG nobitex /v3/trades returned 404 for params {'market': 'SOLUSDT', 'from': 1
 </head>
 <body>
   <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/history returned 404 for params {'market': 'SOLUSDT', 'from': 1759161586, 'to': 1760025586, 'limit': 500} snippet 
+DEBUG nobitex /v3/history returned 404 for params {'market': 'SOLUSDT', 'from': 1759236537, 'to': 1760100537, 'limit': 500} snippet 
 <!doctype html>
 <html lang="en">
 <head>
@@ -545,7 +386,7 @@ DEBUG nobitex /v3/history returned 404 for params {'market': 'SOLUSDT', 'from': 
 </head>
 <body>
   <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/market/trades returned 404 for params {'market': 'SOLUSDT', 'from': 1759161586, 'to': 1760025586, 'limit': 500} snippet 
+DEBUG nobitex /v3/market/trades returned 404 for params {'market': 'SOLUSDT', 'from': 1759236537, 'to': 1760100537, 'limit': 500} snippet 
 <!doctype html>
 <html lang="en">
 <head>
@@ -553,7 +394,7 @@ DEBUG nobitex /v3/market/trades returned 404 for params {'market': 'SOLUSDT', 'f
 </head>
 <body>
   <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/market/candles returned 404 for params {'market': 'SOLUSDT', 'from': 1759161586, 'to': 1760025586, 'limit': 500} snippet 
+DEBUG nobitex /v3/market/candles returned 404 for params {'market': 'SOLUSDT', 'from': 1759236537, 'to': 1760100537, 'limit': 500} snippet 
 <!doctype html>
 <html lang="en">
 <head>
@@ -561,7 +402,7 @@ DEBUG nobitex /v3/market/candles returned 404 for params {'market': 'SOLUSDT', '
 </head>
 <body>
   <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/candles returned 404 for params {'symbol': 'SOLUSDT', 'resolution': '60', 'from': 1759161586, 'to': 1760025586} snippet 
+DEBUG nobitex /v3/candles returned 404 for params {'symbol': 'SOLUSDT', 'resolution': '60', 'from': 1759236537, 'to': 1760100537} snippet 
 <!doctype html>
 <html lang="en">
 <head>
@@ -569,7 +410,7 @@ DEBUG nobitex /v3/candles returned 404 for params {'symbol': 'SOLUSDT', 'resolut
 </head>
 <body>
   <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/trades returned 404 for params {'symbol': 'SOLUSDT', 'resolution': '60', 'from': 1759161586, 'to': 1760025586} snippet 
+DEBUG nobitex /v3/trades returned 404 for params {'symbol': 'SOLUSDT', 'resolution': '60', 'from': 1759236537, 'to': 1760100537} snippet 
 <!doctype html>
 <html lang="en">
 <head>
@@ -577,7 +418,7 @@ DEBUG nobitex /v3/trades returned 404 for params {'symbol': 'SOLUSDT', 'resoluti
 </head>
 <body>
   <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/history returned 404 for params {'symbol': 'SOLUSDT', 'resolution': '60', 'from': 1759161586, 'to': 1760025586} snippet 
+DEBUG nobitex /v3/history returned 404 for params {'symbol': 'SOLUSDT', 'resolution': '60', 'from': 1759236537, 'to': 1760100537} snippet 
 <!doctype html>
 <html lang="en">
 <head>
@@ -585,7 +426,7 @@ DEBUG nobitex /v3/history returned 404 for params {'symbol': 'SOLUSDT', 'resolut
 </head>
 <body>
   <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/market/trades returned 404 for params {'symbol': 'SOLUSDT', 'resolution': '60', 'from': 1759161586, 'to': 1760025586} snippet 
+DEBUG nobitex /v3/market/trades returned 404 for params {'symbol': 'SOLUSDT', 'resolution': '60', 'from': 1759236537, 'to': 1760100537} snippet 
 <!doctype html>
 <html lang="en">
 <head>
@@ -593,7 +434,7 @@ DEBUG nobitex /v3/market/trades returned 404 for params {'symbol': 'SOLUSDT', 'r
 </head>
 <body>
   <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/market/candles returned 404 for params {'symbol': 'SOLUSDT', 'resolution': '60', 'from': 1759161586, 'to': 1760025586} snippet 
+DEBUG nobitex /v3/market/candles returned 404 for params {'symbol': 'SOLUSDT', 'resolution': '60', 'from': 1759236537, 'to': 1760100537} snippet 
 <!doctype html>
 <html lang="en">
 <head>
@@ -682,7 +523,7 @@ DEBUG nobitex /v3/market/candles returned 404 for params {'market': 'BNBUSDT', '
 </head>
 <body>
   <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/candles returned 404 for params {'market': 'BNBUSDT', 'from': 1759161593, 'to': 1760025593, 'limit': 500} snippet 
+DEBUG nobitex /v3/candles returned 404 for params {'market': 'BNBUSDT', 'from': 1759236543, 'to': 1760100543, 'limit': 500} snippet 
 <!doctype html>
 <html lang="en">
 <head>
@@ -690,7 +531,7 @@ DEBUG nobitex /v3/candles returned 404 for params {'market': 'BNBUSDT', 'from': 
 </head>
 <body>
   <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/trades returned 404 for params {'market': 'BNBUSDT', 'from': 1759161593, 'to': 1760025593, 'limit': 500} snippet 
+DEBUG nobitex /v3/trades returned 404 for params {'market': 'BNBUSDT', 'from': 1759236543, 'to': 1760100543, 'limit': 500} snippet 
 <!doctype html>
 <html lang="en">
 <head>
@@ -698,7 +539,7 @@ DEBUG nobitex /v3/trades returned 404 for params {'market': 'BNBUSDT', 'from': 1
 </head>
 <body>
   <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/history returned 404 for params {'market': 'BNBUSDT', 'from': 1759161593, 'to': 1760025593, 'limit': 500} snippet 
+DEBUG nobitex /v3/history returned 404 for params {'market': 'BNBUSDT', 'from': 1759236543, 'to': 1760100543, 'limit': 500} snippet 
 <!doctype html>
 <html lang="en">
 <head>
@@ -706,7 +547,7 @@ DEBUG nobitex /v3/history returned 404 for params {'market': 'BNBUSDT', 'from': 
 </head>
 <body>
   <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/market/trades returned 404 for params {'market': 'BNBUSDT', 'from': 1759161593, 'to': 1760025593, 'limit': 500} snippet 
+DEBUG nobitex /v3/market/trades returned 404 for params {'market': 'BNBUSDT', 'from': 1759236543, 'to': 1760100543, 'limit': 500} snippet 
 <!doctype html>
 <html lang="en">
 <head>
@@ -714,7 +555,7 @@ DEBUG nobitex /v3/market/trades returned 404 for params {'market': 'BNBUSDT', 'f
 </head>
 <body>
   <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/market/candles returned 404 for params {'market': 'BNBUSDT', 'from': 1759161593, 'to': 1760025593, 'limit': 500} snippet 
+DEBUG nobitex /v3/market/candles returned 404 for params {'market': 'BNBUSDT', 'from': 1759236543, 'to': 1760100543, 'limit': 500} snippet 
 <!doctype html>
 <html lang="en">
 <head>
@@ -722,7 +563,7 @@ DEBUG nobitex /v3/market/candles returned 404 for params {'market': 'BNBUSDT', '
 </head>
 <body>
   <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/candles returned 404 for params {'symbol': 'BNBUSDT', 'resolution': '60', 'from': 1759161593, 'to': 1760025593} snippet 
+DEBUG nobitex /v3/candles returned 404 for params {'symbol': 'BNBUSDT', 'resolution': '60', 'from': 1759236543, 'to': 1760100543} snippet 
 <!doctype html>
 <html lang="en">
 <head>
@@ -730,7 +571,7 @@ DEBUG nobitex /v3/candles returned 404 for params {'symbol': 'BNBUSDT', 'resolut
 </head>
 <body>
   <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/trades returned 404 for params {'symbol': 'BNBUSDT', 'resolution': '60', 'from': 1759161593, 'to': 1760025593} snippet 
+DEBUG nobitex /v3/trades returned 404 for params {'symbol': 'BNBUSDT', 'resolution': '60', 'from': 1759236543, 'to': 1760100543} snippet 
 <!doctype html>
 <html lang="en">
 <head>
@@ -738,7 +579,7 @@ DEBUG nobitex /v3/trades returned 404 for params {'symbol': 'BNBUSDT', 'resoluti
 </head>
 <body>
   <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/history returned 404 for params {'symbol': 'BNBUSDT', 'resolution': '60', 'from': 1759161593, 'to': 1760025593} snippet 
+DEBUG nobitex /v3/history returned 404 for params {'symbol': 'BNBUSDT', 'resolution': '60', 'from': 1759236543, 'to': 1760100543} snippet 
 <!doctype html>
 <html lang="en">
 <head>
@@ -746,7 +587,7 @@ DEBUG nobitex /v3/history returned 404 for params {'symbol': 'BNBUSDT', 'resolut
 </head>
 <body>
   <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/market/trades returned 404 for params {'symbol': 'BNBUSDT', 'resolution': '60', 'from': 1759161593, 'to': 1760025593} snippet 
+DEBUG nobitex /v3/market/trades returned 404 for params {'symbol': 'BNBUSDT', 'resolution': '60', 'from': 1759236543, 'to': 1760100543} snippet 
 <!doctype html>
 <html lang="en">
 <head>
@@ -754,7 +595,7 @@ DEBUG nobitex /v3/market/trades returned 404 for params {'symbol': 'BNBUSDT', 'r
 </head>
 <body>
   <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/market/candles returned 404 for params {'symbol': 'BNBUSDT', 'resolution': '60', 'from': 1759161593, 'to': 1760025593} snippet 
+DEBUG nobitex /v3/market/candles returned 404 for params {'symbol': 'BNBUSDT', 'resolution': '60', 'from': 1759236543, 'to': 1760100543} snippet 
 <!doctype html>
 <html lang="en">
 <head>
@@ -843,7 +684,7 @@ DEBUG nobitex /v3/market/candles returned 404 for params {'market': 'DOGEUSDT', 
 </head>
 <body>
   <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/candles returned 404 for params {'market': 'DOGEUSDT', 'from': 1759161600, 'to': 1760025600, 'limit': 500} snippet 
+DEBUG nobitex /v3/candles returned 404 for params {'market': 'DOGEUSDT', 'from': 1759236549, 'to': 1760100549, 'limit': 500} snippet 
 <!doctype html>
 <html lang="en">
 <head>
@@ -851,7 +692,7 @@ DEBUG nobitex /v3/candles returned 404 for params {'market': 'DOGEUSDT', 'from':
 </head>
 <body>
   <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/trades returned 404 for params {'market': 'DOGEUSDT', 'from': 1759161600, 'to': 1760025600, 'limit': 500} snippet 
+DEBUG nobitex /v3/trades returned 404 for params {'market': 'DOGEUSDT', 'from': 1759236549, 'to': 1760100549, 'limit': 500} snippet 
 <!doctype html>
 <html lang="en">
 <head>
@@ -859,7 +700,7 @@ DEBUG nobitex /v3/trades returned 404 for params {'market': 'DOGEUSDT', 'from': 
 </head>
 <body>
   <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/history returned 404 for params {'market': 'DOGEUSDT', 'from': 1759161600, 'to': 1760025600, 'limit': 500} snippet 
+DEBUG nobitex /v3/history returned 404 for params {'market': 'DOGEUSDT', 'from': 1759236549, 'to': 1760100549, 'limit': 500} snippet 
 <!doctype html>
 <html lang="en">
 <head>
@@ -867,7 +708,7 @@ DEBUG nobitex /v3/history returned 404 for params {'market': 'DOGEUSDT', 'from':
 </head>
 <body>
   <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/market/trades returned 404 for params {'market': 'DOGEUSDT', 'from': 1759161600, 'to': 1760025600, 'limit': 500} snippet 
+DEBUG nobitex /v3/market/trades returned 404 for params {'market': 'DOGEUSDT', 'from': 1759236549, 'to': 1760100549, 'limit': 500} snippet 
 <!doctype html>
 <html lang="en">
 <head>
@@ -875,7 +716,7 @@ DEBUG nobitex /v3/market/trades returned 404 for params {'market': 'DOGEUSDT', '
 </head>
 <body>
   <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/market/candles returned 404 for params {'market': 'DOGEUSDT', 'from': 1759161600, 'to': 1760025600, 'limit': 500} snippet 
+DEBUG nobitex /v3/market/candles returned 404 for params {'market': 'DOGEUSDT', 'from': 1759236549, 'to': 1760100549, 'limit': 500} snippet 
 <!doctype html>
 <html lang="en">
 <head>
@@ -883,7 +724,7 @@ DEBUG nobitex /v3/market/candles returned 404 for params {'market': 'DOGEUSDT', 
 </head>
 <body>
   <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/candles returned 404 for params {'symbol': 'DOGEUSDT', 'resolution': '60', 'from': 1759161600, 'to': 1760025600} snippet 
+DEBUG nobitex /v3/candles returned 404 for params {'symbol': 'DOGEUSDT', 'resolution': '60', 'from': 1759236549, 'to': 1760100549} snippet 
 <!doctype html>
 <html lang="en">
 <head>
@@ -891,7 +732,7 @@ DEBUG nobitex /v3/candles returned 404 for params {'symbol': 'DOGEUSDT', 'resolu
 </head>
 <body>
   <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/trades returned 404 for params {'symbol': 'DOGEUSDT', 'resolution': '60', 'from': 1759161600, 'to': 1760025600} snippet 
+DEBUG nobitex /v3/trades returned 404 for params {'symbol': 'DOGEUSDT', 'resolution': '60', 'from': 1759236549, 'to': 1760100549} snippet 
 <!doctype html>
 <html lang="en">
 <head>
@@ -899,7 +740,7 @@ DEBUG nobitex /v3/trades returned 404 for params {'symbol': 'DOGEUSDT', 'resolut
 </head>
 <body>
   <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/history returned 404 for params {'symbol': 'DOGEUSDT', 'resolution': '60', 'from': 1759161600, 'to': 1760025600} snippet 
+DEBUG nobitex /v3/history returned 404 for params {'symbol': 'DOGEUSDT', 'resolution': '60', 'from': 1759236549, 'to': 1760100549} snippet 
 <!doctype html>
 <html lang="en">
 <head>
@@ -907,7 +748,7 @@ DEBUG nobitex /v3/history returned 404 for params {'symbol': 'DOGEUSDT', 'resolu
 </head>
 <body>
   <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/market/trades returned 404 for params {'symbol': 'DOGEUSDT', 'resolution': '60', 'from': 1759161600, 'to': 1760025600} snippet 
+DEBUG nobitex /v3/market/trades returned 404 for params {'symbol': 'DOGEUSDT', 'resolution': '60', 'from': 1759236549, 'to': 1760100549} snippet 
 <!doctype html>
 <html lang="en">
 <head>
@@ -915,7 +756,7 @@ DEBUG nobitex /v3/market/trades returned 404 for params {'symbol': 'DOGEUSDT', '
 </head>
 <body>
   <h1>Not Found</h1><p>The requested resource was not found on this server.</
-DEBUG nobitex /v3/market/candles returned 404 for params {'symbol': 'DOGEUSDT', 'resolution': '60', 'from': 1759161600, 'to': 1760025600} snippet 
+DEBUG nobitex /v3/market/candles returned 404 for params {'symbol': 'DOGEUSDT', 'resolution': '60', 'from': 1759236549, 'to': 1760100549} snippet 
 <!doctype html>
 <html lang="en">
 <head>
@@ -964,74 +805,12 @@ DEBUG nobitex /v3/market/candles returned 404 for params {'symbol': 'DOGEUSDT', 
 <body>
   <h1>Not Found</h1><p>The requested resource was not found on this server.</
 ⚠️ کندل برای DOGEUSDT دردسترس نیست؛ انتخاب بر اساس orderbook (fallback) انجام شد.
-📊 نمادهای انتخاب‌شده: ['BTCUSDT', 'ETHUSDT', 'XRPUSDT', 'SOLUSDT', 'BNBUSDT', 'DOGEUSDT']
-SELECTED: ['BTCUSDT', 'ETHUSDT', 'XRPUSDT', 'SOLUSDT', 'BNBUSDT', 'DOGEUSDT']
-[
-  {
-    "market": "BTCUSDT",
-    "ok": true,
-    "reason": "orderbook_only",
-    "metrics": {
-      "top_bid_sum_quote": 1115.09267838,
-      "top_ask_sum_quote": 14551.42096624,
-      "top_quote_total": 15666.513644620001,
-      "mid_price": 121185.82,
-      "bid_depth_price_range": 0.001422828666432733,
-      "ask_depth_price_range": 0.0030615926959698826
-    },
-    "top_quote": 15666.513644620001
-  },
-  {
-    "market": "ETHUSDT",
-    "ok": true,
-    "reason": "orderbook_only",
-    "metrics": {
-      "top_bid_sum_quote": 12151.1647545,
-      "top_ask_sum_quote": 9449.998093600001,
-      "top_quote_total": 21601.1628481,
-      "mid_price": 4320.174999999999,
-      "bid_depth_price_range": 0.002889663182346016,
-      "ask_depth_price_range": 0.007654566021499441
-    },
-    "top_quote": 21601.1628481
-  },
-  {
-    "market": "XRPUSDT",
-    "ok": true,
-    "reason": "orderbook_only",
-    "metrics": {
-      "top_bid_sum_quote": 6095.342231999999,
-      "top_ask_sum_quote": 14251.436647999999,
-      "top_quote_total": 20346.778879999998,
-      "mid_price": 2.80708,
-      "bid_depth_price_range": 0.0038267543467133624,
-      "ask_depth_price_range": 0.00738083545078612
-    },
-    "top_quote": 20346.778879999998
-  },
-  {
-    "market": "SOLUSDT",
-    "ok": true,
-    "reason": "orderbook_only",
-    "metrics": {
-      "top_bid_sum_quote": 14246.264742,
-      "top_ask_sum_quote": 12074.156580000003,
-      "top_quote_total": 26320.421322000002,
-      "mid_price": 219.1985,
-      "bid_depth_price_range": 0.004167430772052044,
-      "ask_depth_price_range": 0.016556653659603977
-    },
-    "top_quote": 26320.421322000002
-  },
-  {
-    "market": "BNBUSDT",
-    "ok": true,
-    "reason": "orderbook_only",
-    "metrics": {
-      "top_bid_sum_quote": 4739.4302824999995,
-      "top_ask_sum_quote": 10959.6283475,
-      "top_quote_total": 15699.05863,
-      "mid_price": 1238.2567,
-      "bid_depth_price_range": 0.00693273615635183,
-      "ask_depth_price_range": 0.009586532258064594
-    }
+📊 نمادهای انتخاب‌شده: ['ETHUSDT', 'XRPUSDT', 'SOLUSDT', 'BNBUSDT', 'DOGEUSDT']
+🔍 Processing BTCUSDT → reason=low_liquidity: top_quote=11838.57 < 15000
+🔍 Processing ETHUSDT → reason=orderbook_only
+🔍 Processing XRPUSDT → reason=orderbook_only
+🔍 Processing SOLUSDT → reason=orderbook_only
+🔍 Processing BNBUSDT → reason=orderbook_only
+🔍 Processing DOGEUSDT → reason=orderbook_only
+✅ داشبورد ساخته شد: output/dashboard.html
+✅ اسکن کامل شد و داشبورد ساخته شد: output/dashboard.html

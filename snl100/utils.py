@@ -1,31 +1,22 @@
-# Helper functions
-import pandas as pd
+import csv
 import os
-from datetime import datetime
 
-def save_signal_to_csv(signal_data, symbol="BTCUSDT", output_dir="output/signals"):
-    if signal_data["signal"] is None:
-        print("⚠️ سیگنالی برای ذخیره وجود ندارد.")
-        return
-
+def save_signal_to_csv(signal, symbol, output_dir="output"):
     os.makedirs(output_dir, exist_ok=True)
+    filepath = os.path.join(output_dir, f"{symbol}_signal.csv")
 
-    now = datetime.now().strftime("%Y-%m-%d %H:%M")
-    filename = f"{output_dir}/{symbol}_signal.csv"
-
-    df = pd.DataFrame([{
-        "time": now,
-        "symbol": symbol,
-        "signal": signal_data["signal"],
-        "entry": signal_data["entry"],
-        "stop": signal_data["stop"],
-        "target": signal_data["target"]
-    }])
-
-    if os.path.exists(filename):
-        df.to_csv(filename, mode="a", header=False, index=False)
+    if isinstance(signal, dict):
+        with open(filepath, "w", newline="", encoding="utf-8") as f:
+            writer = csv.writer(f)
+            writer.writerow(["key", "value"])
+            for k, v in signal.items():
+                writer.writerow([k, v])
+    elif isinstance(signal, list):
+        keys = signal[0].keys() if signal else []
+        with open(filepath, "w", newline="", encoding="utf-8") as f:
+            writer = csv.DictWriter(f, fieldnames=keys)
+            writer.writeheader()
+            writer.writerows(signal)
     else:
-        df.to_csv(filename, index=False)
-
-    print(f"✅ سیگنال ذخیره شد: {filename}")
-
+        with open(filepath, "w", encoding="utf-8") as f:
+            f.write(str(signal))
