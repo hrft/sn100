@@ -1,8 +1,0 @@
-key,value
-Time,now
-Symbol,BNBUSDT
-Signal,entry
-Entry,1130.3519000000001
-Stop,1107.7449
-Target,1164.2625
-Chart,signals/BNBUSDT_chart.html
