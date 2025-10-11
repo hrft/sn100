@@ -1,3 +1,5 @@
+import os
+import json
 from snl100.symbol_filter import filter_symbols_nobitex
 from snl100.nobitex_api import fetch_candles_or_trades
 from snl100.nobitex_orderbook import orderbook_liquidity_metrics
@@ -5,8 +7,6 @@ from snl100.signal_engine import generate_signal
 from snl100.plotter import plot_signal
 from snl100.utils import save_signal_to_csv
 from snl100.dashboard_builder import build_dashboard_html
-import json
-import os
 
 MARKETS = ["BTCUSDT", "ETHUSDT", "XRPUSDT", "SOLUSDT", "BNBUSDT", "DOGEUSDT"]
 
@@ -14,19 +14,19 @@ def orderbook_entry_logic(market, metrics):
     mid = metrics.get("mid_price")
     top_total = metrics.get("top_quote_total", 0)
     entry = {
-        "Time": "now",  # یا datetime.now().strftime(...)
+        "Time": "now",
         "Symbol": market,
         "Signal": "entry",
         "Entry": mid,
         "Stop": round(mid * (1 - 0.02), 4),
         "Target": round(mid * (1 + 0.03), 4),
-        "Chart": f"{market}_chart.html"
+        "Chart": f"signals/{market}_chart.html"
     }
     return entry
 
-
 def scan_all_symbols():
     os.makedirs("output", exist_ok=True)
+    os.makedirs("output/signals", exist_ok=True)
 
     selected, details = filter_symbols_nobitex(
         MARKETS,
@@ -55,10 +55,15 @@ def scan_all_symbols():
                 save_signal_to_csv(entry, symbol=market)
                 continue
             signal = generate_signal(df)
-            plot_signal(df, signal, symbol=market, output_path=f"output/{market}_chart.html")
+            chart_path = f"output/signals/{market}_chart.html"
+            plot_signal(df, signal, symbol=market, output_path=chart_path)
+            if isinstance(signal, dict):
+                signal["Chart"] = f"signals/{market}_chart.html"
             save_signal_to_csv(signal, symbol=market)
         else:
             entry = orderbook_entry_logic(market, d.get("metrics", {}))
+            chart_path = f"output/signals/{market}_chart.html"
+            plot_signal(None, None, symbol=market, output_path=chart_path)  # optional placeholder
             save_signal_to_csv(entry, symbol=market)
 
     build_dashboard_html()

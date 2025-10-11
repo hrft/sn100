@@ -1,55 +1,29 @@
-# Plot candlestick chart
+import os
 import plotly.graph_objects as go
 import pandas as pd
-import os
+from datetime import datetime
 
-def plot_signal(df, signal_data, symbol="BTCUSDT", output_path="output/signal_chart.html"):
-    df = df.copy()
-    df["MA50"] = df["Close"].rolling(window=50).mean()
+def plot_signal(df, signal, symbol, output_path=None):
+    os.makedirs("output/signals", exist_ok=True)
+
+    if output_path is None:
+        output_path = f"output/signals/{symbol}_chart.html"
 
     fig = go.Figure()
 
-    # کندل‌استیک
-    fig.add_trace(go.Candlestick(
-        x=df["Date"],
-        open=df["Open"],
-        high=df["High"],
-        low=df["Low"],
-        close=df["Close"],
-        name="Candles"
-    ))
+    if df is not None and not df.empty:
+        fig.add_trace(go.Scatter(x=df.index, y=df["Close"], mode="lines", name="Close"))
+        fig.update_layout(title=f"Signal Chart: {symbol}", xaxis_title="Time", yaxis_title="Price")
+    else:
+        # ساخت placeholder ساده برای حالت بدون داده
+        fig.add_annotation(text="No candle data available",
+                           xref="paper", yref="paper",
+                           x=0.5, y=0.5, showarrow=False,
+                           font=dict(size=20))
+        fig.update_layout(title=f"Signal Chart: {symbol} (Fallback)",
+                          xaxis=dict(visible=False),
+                          yaxis=dict(visible=False))
 
-    # MA50
-    fig.add_trace(go.Scatter(
-        x=df["Date"],
-        y=df["MA50"],
-        mode="lines",
-        name="MA50",
-        line=dict(color="blue", width=1)
-    ))
-
-    # نقاط سیگنال
-    if signal_data["signal"] in ["buy", "sell"]:
-        color = "green" if signal_data["signal"] == "buy" else "red"
-        fig.add_trace(go.Scatter(
-            x=[df["Date"].iloc[-1]],
-            y=[signal_data["entry"]],
-            mode="markers+text",
-            name="Entry",
-            marker=dict(color=color, size=10),
-            text=[f"{signal_data['signal'].upper()}"],
-            textposition="top center"
-        ))
-
-    fig.update_layout(
-        title=f"Signal Chart for {symbol}",
-        xaxis_title="Date",
-        yaxis_title="Price",
-        template="plotly_dark",
-        height=600
-    )
-
-    os.makedirs(os.path.dirname(output_path), exist_ok=True)
     fig.write_html(output_path)
-    print(f"✅ نمودار ذخیره شد: {output_path}")
+    print(f"📈 چارت ذخیره شد: {output_path}")
 

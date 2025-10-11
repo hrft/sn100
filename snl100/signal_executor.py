@@ -25,7 +25,7 @@ def simulate_signal_execution(signal):
 
 def load_signals(output_dir="output"):
     signal_files = list(Path(output_dir).glob("*_signal.csv"))
-    signal_files = list(Path("output").glob("*_signal.csv"))
+    # signal_files = list(Path("output").glob("*_signal.csv"))
 
     signals = []
 
@@ -61,7 +61,9 @@ def save_results(results, output_dir="output", filename="results.csv"):
             writer.writerow(r)
 
 def run_simulation():
+    print("🚀 تابع run_simulation وارد شد")
     signals = load_signals(output_dir="output")
+    #print("\noutput_dir: ", output_dir, "\nSignals:",signals)
     results = []
     now = datetime.now().strftime("%Y-%m-%d %H:%M")
 
@@ -82,4 +84,8 @@ def run_simulation():
 
     save_results(results)
     print("✅ نتایج شبیه‌سازی ذخیره شد: output/results.csv")
+
+if __name__ == "__main__":
+    print("📦 اجرای اصلی شروع شد")
+    run_simulation()
 

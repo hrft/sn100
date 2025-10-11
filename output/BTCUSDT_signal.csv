@@ -1,8 +1,0 @@
-key,value
-Time,now
-Symbol,BTCUSDT
-Signal,entry
-Entry,121999.5
-Stop,119559.51
-Target,125659.485
-Chart,BTCUSDT_chart.html

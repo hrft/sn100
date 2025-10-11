@@ -1,86 +1,85 @@
 [
   {
     "market": "BTCUSDT",
-    "ok": true,
-    "reason": "orderbook_only",
+    "ok": false,
+    "reason": "low_liquidity: top_quote=13408.35 < 15000",
     "metrics": {
-      "top_bid_sum_quote": 5091.40766198,
-      "top_ask_sum_quote": 17320.40640245,
-      "top_quote_total": 22411.81406443,
-      "mid_price": 121999.5,
-      "bid_depth_price_range": 0.004783301880063789,
-      "ask_depth_price_range": 0.0024784426229507816
-    },
-    "top_quote": 22411.81406443
+      "top_bid_sum_quote": 3260.9093905699997,
+      "top_ask_sum_quote": 10147.437963920001,
+      "top_quote_total": 13408.34735449,
+      "mid_price": 112181.26000000001,
+      "bid_depth_price_range": 0.0033135782132658136,
+      "ask_depth_price_range": 0.002196161255106029
+    }
   },
   {
     "market": "ETHUSDT",
     "ok": true,
     "reason": "orderbook_only",
     "metrics": {
-      "top_bid_sum_quote": 6397.377062700001,
-      "top_ask_sum_quote": 16941.4988122,
-      "top_quote_total": 23338.8758749,
-      "mid_price": 4370.195,
-      "bid_depth_price_range": 0.0023437966291567467,
-      "ask_depth_price_range": 0.0017786922725193748
+      "top_bid_sum_quote": 22084.579564999993,
+      "top_ask_sum_quote": 13804.723164200002,
+      "top_quote_total": 35889.3027292,
+      "mid_price": 3811.94,
+      "bid_depth_price_range": 0.0031685211111929755,
+      "ask_depth_price_range": 0.0044701413446101125
     },
-    "top_quote": 23338.8758749
+    "top_quote": 35889.3027292
   },
   {
     "market": "XRPUSDT",
     "ok": true,
     "reason": "orderbook_only",
     "metrics": {
-      "top_bid_sum_quote": 2506.5204739999995,
-      "top_ask_sum_quote": 11300.464629000002,
-      "top_quote_total": 13806.985103,
-      "mid_price": 2.825755,
-      "bid_depth_price_range": 0.0033309633842871153,
-      "ask_depth_price_range": 0.003131693730250135
+      "top_bid_sum_quote": 15449.857593,
+      "top_ask_sum_quote": 13706.692312000001,
+      "top_quote_total": 29156.549905,
+      "mid_price": 2.44932,
+      "bid_depth_price_range": 0.0060288065843621605,
+      "ask_depth_price_range": 0.004026096275860899
     },
-    "top_quote": 13806.985103
+    "top_quote": 29156.549905
   },
   {
     "market": "SOLUSDT",
     "ok": true,
     "reason": "orderbook_only",
     "metrics": {
-      "top_bid_sum_quote": 4056.2712730000003,
-      "top_ask_sum_quote": 16228.941470999998,
-      "top_quote_total": 20285.212743999997,
-      "mid_price": 222.61450000000002,
-      "bid_depth_price_range": 0.005101671938544919,
-      "ask_depth_price_range": 0.005385996409335676
+      "top_bid_sum_quote": 12930.045849,
+      "top_ask_sum_quote": 5728.020897999999,
+      "top_quote_total": 18658.066746999997,
+      "mid_price": 183.405,
+      "bid_depth_price_range": 0.004939626783754147,
+      "ask_depth_price_range": 0.008894453214305079
     },
-    "top_quote": 20285.212743999997
+    "top_quote": 18658.066746999997
   },
   {
     "market": "BNBUSDT",
     "ok": true,
     "reason": "orderbook_only",
     "metrics": {
-      "top_bid_sum_quote": 6765.7051236,
-      "top_ask_sum_quote": 8169.746441300002,
-      "top_quote_total": 14935.451564900002,
-      "mid_price": 1263.8696,
-      "bid_depth_price_range": 0.009349323584023976,
-      "ask_depth_price_range": 0.007848245159629159
+      "top_bid_sum_quote": 20072.037892,
+      "top_ask_sum_quote": 3067.1435722,
+      "top_quote_total": 23139.1814642,
+      "mid_price": 1130.3519000000001,
+      "bid_depth_price_range": 0.007771339285714264,
+      "ask_depth_price_range": 0.0063241171664413605
     },
-    "top_quote": 14935.451564900002
+    "top_quote": 23139.1814642
   },
   {
     "market": "DOGEUSDT",
     "ok": true,
     "reason": "orderbook_only",
     "metrics": {
-      "top_bid_sum_quote": 8787.674667899999,
-      "top_ask_sum_quote": 4770.7422992,
-      "top_quote_total": 13558.416967099998,
-      "mid_price": 0.2522778,
-      "bid_depth_price_range": 0.01312540192926048,
-      "ask_depth_price_range": 0.001980276446591946
+      "top_bid_sum_quote": 22170.379021,
+      "top_ask_sum_quote": 9784.709950000002,
+      "top_quote_total": 31955.088971000005,
+      "mid_price": 0.1903877,
+      "bid_depth_price_range": 0.005504833441400799,
+      "ask_depth_price_range": 0.014698162729658777
     },
-    "top_quote": 13558.416967099998
+    "top_quote": 31955.088971000005
   }
 ]
