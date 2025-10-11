@@ -14,16 +14,21 @@ def orderbook_entry_logic(market, metrics):
     mid = metrics.get("mid_price")
     bid_range = metrics.get("bid_depth_price_range", 0.02)
     ask_range = metrics.get("ask_depth_price_range", 0.03)
-    
+
+    # محاسبه‌ی Stop و Target بر اساس نوسان واقعی
+    stop = round(mid * (1 - bid_range), 4)
+    target = round(mid * (1 + ask_range), 4)
+
     entry = {
-	"Time": "now",
-	"Symbol": market,
-	"Signal": "entry",
-	"Entry": mid,
-	"Stop": round(mid * (1 - bid_range), 4),
-	"Target": round(mid * (1 + ask_range), 4),
-	"Chart": f"signals/{market}_chart.html"
+        "Time": "now",
+        "Symbol": market,
+        "Signal": "entry",
+        "Entry": mid,
+        "Stop": stop,
+        "Target": target,
+        "Chart": f"signals/{market}_chart.html"
     }
+
     return entry
 
 def scan_all_symbols():

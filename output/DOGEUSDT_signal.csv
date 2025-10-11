@@ -1,0 +1,8 @@
+key,value
+Time,now
+Symbol,DOGEUSDT
+Signal,entry
+Entry,0.1918331
+Stop,0.1902
+Target,0.1941
+Chart,signals/DOGEUSDT_chart.html

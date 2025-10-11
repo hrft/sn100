@@ -1,0 +1,8 @@
+key,value
+Time,now
+Symbol,XRPUSDT
+Signal,entry
+Entry,2.4715949999999998
+Stop,2.4563
+Target,2.484
+Chart,signals/XRPUSDT_chart.html

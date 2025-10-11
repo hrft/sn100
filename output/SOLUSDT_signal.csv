@@ -1,0 +1,8 @@
+key,value
+Time,now
+Symbol,SOLUSDT
+Signal,entry
+Entry,183.52499999999998
+Stop,182.8194
+Target,184.5897
+Chart,signals/SOLUSDT_chart.html
