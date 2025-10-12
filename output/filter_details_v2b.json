@@ -1,0 +1,72 @@
+[
+  {
+    "market": "ETHUSDT",
+    "ok": true,
+    "reason": "orderbook_only",
+    "metrics": {
+      "top_bid_sum_quote": 19402.623502000002,
+      "top_ask_sum_quote": 20985.338364099996,
+      "top_quote_total": 40387.9618661,
+      "mid_price": 4056.99,
+      "bid_depth_price_range": 0.004965240834021567,
+      "ask_depth_price_range": 0.004448624176192146
+    },
+    "top_quote": 40387.9618661
+  },
+  {
+    "market": "XRPUSDT",
+    "ok": true,
+    "reason": "orderbook_only",
+    "metrics": {
+      "top_bid_sum_quote": 11342.230922,
+      "top_ask_sum_quote": 16696.83555,
+      "top_quote_total": 28039.066472,
+      "mid_price": 2.496435,
+      "bid_depth_price_range": 0.0056738446648922514,
+      "ask_depth_price_range": 0.01240096038415369
+    },
+    "top_quote": 28039.066472
+  },
+  {
+    "market": "SOLUSDT",
+    "ok": true,
+    "reason": "orderbook_only",
+    "metrics": {
+      "top_bid_sum_quote": 4860.293794,
+      "top_ask_sum_quote": 11682.747167000001,
+      "top_quote_total": 16543.040961000002,
+      "mid_price": 191.7375,
+      "bid_depth_price_range": 0.007338243029984273,
+      "ask_depth_price_range": 0.0063964996353787305
+    },
+    "top_quote": 16543.040961000002
+  },
+  {
+    "market": "BNBUSDT",
+    "ok": true,
+    "reason": "orderbook_only",
+    "metrics": {
+      "top_bid_sum_quote": 27891.8617356,
+      "top_ask_sum_quote": 19292.7689594,
+      "top_quote_total": 47184.630695,
+      "mid_price": 1304.9998500000002,
+      "bid_depth_price_range": 0.0100616865277333,
+      "ask_depth_price_range": 0.006130345297344448
+    },
+    "top_quote": 47184.630695
+  },
+  {
+    "market": "DOGEUSDT",
+    "ok": true,
+    "reason": "orderbook_only",
+    "metrics": {
+      "top_bid_sum_quote": 17267.582451200004,
+      "top_ask_sum_quote": 1486.6420222,
+      "top_quote_total": 18754.224473400005,
+      "mid_price": 0.2059016,
+      "bid_depth_price_range": 0.007033959221141221,
+      "ask_depth_price_range": 0.00873786407767002
+    },
+    "top_quote": 18754.224473400005
+  }
+]

@@ -7,73 +7,110 @@
             h1 { color: #333; }
             table { border-collapse: collapse; width: 100%; background: #fff; }
             th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
-            th { background: #eee; }
+            th { background: #eee; cursor: pointer; }
             tr:hover { background: #f9f9f9; }
+            .hit_target { background-color: #d4edda; }
+            .hit_stop { background-color: #f8d7da; }
+            .neutral { background-color: #e2e3e5; }
+            .profit-total-positive { background-color: #c6f6d5; font-weight: bold; }
+            .profit-total-negative { background-color: #fbb6ce; font-weight: bold; }
         </style>
+        <script>
+            function sortTable(n) {
+                var table = document.getElementById("signalTable");
+                var rows = Array.from(table.rows).slice(1);
+                var asc = table.getAttribute("data-sort-dir") !== "asc";
+                rows.sort(function(a, b) {
+                    var x = a.cells[n].innerText;
+                    var y = b.cells[n].innerText;
+                    return asc ? x.localeCompare(y, undefined, {numeric: true}) : y.localeCompare(x, undefined, {numeric: true});
+                });
+                rows.forEach(row => table.appendChild(row));
+                table.setAttribute("data-sort-dir", asc ? "asc" : "desc");
+            }
+        </script>
     </head>
     <body>
         <h1>Signal Dashboard</h1>
-        <table>
+        <table id="signalTable" data-sort-dir="asc">
             <tr>
-                <th>Time</th>
-                <th>Symbol</th>
-                <th>Signal</th>
-                <th>Entry</th>
-                <th>Stop</th>
-                <th>Target</th>
+                <th onclick="sortTable(0)">Time</th>
+                <th onclick="sortTable(1)">Symbol</th>
+                <th onclick="sortTable(2)">Signal</th>
+                <th onclick="sortTable(3)">Entry</th>
+                <th onclick="sortTable(4)">Stop</th>
+                <th onclick="sortTable(5)">Target</th>
+                <th onclick="sortTable(6)">Result</th>
+                <th onclick="sortTable(7)">Profit</th>
                 <th>Chart</th>
             </tr>
     
-        <tr>
-            <td>now</td>
-            <td>SOLUSDT</td>
-            <td>entry</td>
-            <td>183.52499999999998</td>
-            <td>182.8194</td>
-            <td>184.5897</td>
-            <td><a href="signals/SOLUSDT_chart.html" target="_blank">View</a></td>
-        </tr>
+            <tr class="hit_target">
+                <td>now</td>
+                <td>SOLUSDT</td>
+                <td>entry</td>
+                <td>191.7375</td>
+                <td>189.627</td>
+                <td>193.5772</td>
+                <td>hit_target</td>
+                <td>1.8397</td>
+                <td><a href="signals/SOLUSDT_chart.html" target="_blank">View</a></td>
+            </tr>
+        
+            <tr class="hit_target">
+                <td>now</td>
+                <td>DOGEUSDT</td>
+                <td>entry</td>
+                <td>0.2059016</td>
+                <td>0.2037</td>
+                <td>0.2086</td>
+                <td>hit_target</td>
+                <td>0.0027</td>
+                <td><a href="signals/DOGEUSDT_chart.html" target="_blank">View</a></td>
+            </tr>
+        
+            <tr class="hit_target">
+                <td>now</td>
+                <td>BNBUSDT</td>
+                <td>entry</td>
+                <td>1304.9998500000002</td>
+                <td>1285.3041</td>
+                <td>1317.0</td>
+                <td>hit_target</td>
+                <td>12.0001</td>
+                <td><a href="signals/BNBUSDT_chart.html" target="_blank">View</a></td>
+            </tr>
+        
+            <tr class="hit_target">
+                <td>now</td>
+                <td>ETHUSDT</td>
+                <td>entry</td>
+                <td>4056.99</td>
+                <td>4026.7741</td>
+                <td>4084.062</td>
+                <td>hit_target</td>
+                <td>27.072</td>
+                <td><a href="signals/ETHUSDT_chart.html" target="_blank">View</a></td>
+            </tr>
+        
+            <tr class="hit_target">
+                <td>now</td>
+                <td>XRPUSDT</td>
+                <td>entry</td>
+                <td>2.496435</td>
+                <td>2.4752</td>
+                <td>2.5429</td>
+                <td>hit_target</td>
+                <td>0.0465</td>
+                <td><a href="signals/XRPUSDT_chart.html" target="_blank">View</a></td>
+            </tr>
         
         <tr>
-            <td>now</td>
-            <td>DOGEUSDT</td>
-            <td>entry</td>
-            <td>0.1918331</td>
-            <td>0.1902</td>
-            <td>0.1941</td>
-            <td><a href="signals/DOGEUSDT_chart.html" target="_blank">View</a></td>
+            <td colspan="7" style="text-align:right;"><strong>Total Profit:</strong></td>
+            <td class="profit-total-positive">40.961</td>
+            <td></td>
         </tr>
-        
-        <tr>
-            <td>now</td>
-            <td>BNBUSDT</td>
-            <td>entry</td>
-            <td>1148.9020500000001</td>
-            <td>1129.232</td>
-            <td>1182.6377</td>
-            <td><a href="signals/BNBUSDT_chart.html" target="_blank">View</a></td>
-        </tr>
-        
-        <tr>
-            <td>now</td>
-            <td>ETHUSDT</td>
-            <td>entry</td>
-            <td>3828.365</td>
-            <td>3814.2327</td>
-            <td>3847.2312</td>
-            <td><a href="signals/ETHUSDT_chart.html" target="_blank">View</a></td>
-        </tr>
-        
-        <tr>
-            <td>now</td>
-            <td>XRPUSDT</td>
-            <td>entry</td>
-            <td>2.4715949999999998</td>
-            <td>2.4563</td>
-            <td>2.484</td>
-            <td><a href="signals/XRPUSDT_chart.html" target="_blank">View</a></td>
-        </tr>
-        
+    
         </table>
     </body>
     </html>
