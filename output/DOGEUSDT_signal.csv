@@ -2,7 +2,7 @@ key,value
 Time,now
 Symbol,DOGEUSDT
 Signal,entry
-Entry,0.2059016
-Stop,0.2037
-Target,0.2086
+Entry,0.20974120000000002
+Stop,0.2069
+Target,0.212
 Chart,signals/DOGEUSDT_chart.html

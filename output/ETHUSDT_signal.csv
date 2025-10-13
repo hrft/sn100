@@ -2,7 +2,7 @@ key,value
 Time,now
 Symbol,ETHUSDT
 Signal,entry
-Entry,4056.99
-Stop,4026.7741
-Target,4084.062
+Entry,4136.71
+Stop,4108.8877
+Target,4177.3181
 Chart,signals/ETHUSDT_chart.html

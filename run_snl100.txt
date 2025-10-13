@@ -1,0 +1,30 @@
+Signal 100
+***********
+cd ~/ml-projects/
+python3 -m venv ~/ml-projects/venv
+source ~/ml-projects/venv/bin/activate
+******
+pip install PyQt5
+*******************
+run snl100:
+-----------
+PYTHONPATH=. python scripts/scan_all_v2b.py
+PYTHONPATH=. python snl100/signal_executor.py
+PYTHONPATH=. python snl100/performance_analyzer.py
+PYTHONPATH=. python snl100/dashboard_builder.py
+
+✅ ساختار پروژه نهایی:
+snl100/
+├── core/                  ← ماژول‌های اصلی: signal logic, filters, plotting
+├── data/                  ← داده‌های ورودی یا تستی
+├── output/                ← نتایج، داشبورد، نمودارها
+├── scripts/               ← فایل‌های اجرایی مثل scan_all_v2b.py
+├── snl100/
+│   ├── signal_executor.py
+│   ├── performance_analyzer.py
+│   ├── dashboard_builder.py
+│   └── config.py          ← تنظیمات قابل تغییر (thresholds, paths, etc.)
+├── README.md              ← توضیح پروژه و نحوه اجرا
+├── requirements.txt       ← لیست وابستگی‌ها
+└── run.sh                 ← اسکریپت اجرای کامل پروژه
+

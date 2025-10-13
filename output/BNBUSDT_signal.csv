@@ -2,7 +2,7 @@ key,value
 Time,now
 Symbol,BNBUSDT
 Signal,entry
-Entry,1304.9998500000002
-Stop,1285.3041
-Target,1317.0
+Entry,1276.10075
+Stop,1268.1784
+Target,1297.3462
 Chart,signals/BNBUSDT_chart.html

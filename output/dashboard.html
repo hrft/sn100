@@ -5,6 +5,7 @@
         <style>
             body { font-family: sans-serif; padding: 20px; background: #f4f4f4; }
             h1 { color: #333; }
+            input { margin-bottom: 10px; padding: 5px; width: 300px; }
             table { border-collapse: collapse; width: 100%; background: #fff; }
             th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
             th { background: #eee; cursor: pointer; }
@@ -14,6 +15,8 @@
             .neutral { background-color: #e2e3e5; }
             .profit-total-positive { background-color: #c6f6d5; font-weight: bold; }
             .profit-total-negative { background-color: #fbb6ce; font-weight: bold; }
+            .warning { background: #fff3cd; padding: 20px; border: 1px solid #ffeeba; color: #856404; margin-bottom: 20px; }
+            .chart-container { margin-top: 40px; }
         </style>
         <script>
             function sortTable(n) {
@@ -28,10 +31,22 @@
                 rows.forEach(row => table.appendChild(row));
                 table.setAttribute("data-sort-dir", asc ? "asc" : "desc");
             }
+
+            function filterTable() {
+                var input = document.getElementById("filterInput").value.toUpperCase();
+                var table = document.getElementById("signalTable");
+                var tr = table.getElementsByTagName("tr");
+                for (var i = 1; i < tr.length; i++) {
+                    var txt = tr[i].innerText.toUpperCase();
+                    tr[i].style.display = txt.includes(input) ? "" : "none";
+                }
+            }
         </script>
     </head>
     <body>
         <h1>Signal Dashboard</h1>
+    
+        <input type="text" id="filterInput" onkeyup="filterTable()" placeholder="🔍 Filter by symbol, result, profit...">
         <table id="signalTable" data-sort-dir="asc">
             <tr>
                 <th onclick="sortTable(0)">Time</th>
@@ -49,11 +64,11 @@
                 <td>now</td>
                 <td>SOLUSDT</td>
                 <td>entry</td>
-                <td>191.7375</td>
-                <td>189.627</td>
-                <td>193.5772</td>
+                <td>196.875</td>
+                <td>192.7969</td>
+                <td>198.6589</td>
                 <td>hit_target</td>
-                <td>1.8397</td>
+                <td>1.7839</td>
                 <td><a href="signals/SOLUSDT_chart.html" target="_blank">View</a></td>
             </tr>
         
@@ -61,11 +76,11 @@
                 <td>now</td>
                 <td>DOGEUSDT</td>
                 <td>entry</td>
-                <td>0.2059016</td>
-                <td>0.2037</td>
-                <td>0.2086</td>
+                <td>0.20974120000000002</td>
+                <td>0.2069</td>
+                <td>0.212</td>
                 <td>hit_target</td>
-                <td>0.0027</td>
+                <td>0.0023</td>
                 <td><a href="signals/DOGEUSDT_chart.html" target="_blank">View</a></td>
             </tr>
         
@@ -73,11 +88,11 @@
                 <td>now</td>
                 <td>BNBUSDT</td>
                 <td>entry</td>
-                <td>1304.9998500000002</td>
-                <td>1285.3041</td>
-                <td>1317.0</td>
+                <td>1276.10075</td>
+                <td>1268.1784</td>
+                <td>1297.3462</td>
                 <td>hit_target</td>
-                <td>12.0001</td>
+                <td>21.2454</td>
                 <td><a href="signals/BNBUSDT_chart.html" target="_blank">View</a></td>
             </tr>
         
@@ -85,11 +100,11 @@
                 <td>now</td>
                 <td>ETHUSDT</td>
                 <td>entry</td>
-                <td>4056.99</td>
-                <td>4026.7741</td>
-                <td>4084.062</td>
+                <td>4136.71</td>
+                <td>4108.8877</td>
+                <td>4177.3181</td>
                 <td>hit_target</td>
-                <td>27.072</td>
+                <td>40.6081</td>
                 <td><a href="signals/ETHUSDT_chart.html" target="_blank">View</a></td>
             </tr>
         
@@ -97,21 +112,18 @@
                 <td>now</td>
                 <td>XRPUSDT</td>
                 <td>entry</td>
-                <td>2.496435</td>
-                <td>2.4752</td>
-                <td>2.5429</td>
+                <td>2.586515</td>
+                <td>2.5178</td>
+                <td>2.6241</td>
                 <td>hit_target</td>
-                <td>0.0465</td>
+                <td>0.0376</td>
                 <td><a href="signals/XRPUSDT_chart.html" target="_blank">View</a></td>
             </tr>
         
         <tr>
             <td colspan="7" style="text-align:right;"><strong>Total Profit:</strong></td>
-            <td class="profit-total-positive">40.961</td>
+            <td class="profit-total-positive">63.6773</td>
             <td></td>
         </tr>
-    
         </table>
-    </body>
-    </html>
-    
+    <div class="chart-container"></div></body></html>

@@ -2,7 +2,7 @@ key,value
 Time,now
 Symbol,XRPUSDT
 Signal,entry
-Entry,2.496435
-Stop,2.4752
-Target,2.5429
+Entry,2.586515
+Stop,2.5178
+Target,2.6241
 Chart,signals/XRPUSDT_chart.html
