@@ -1,9 +1,23 @@
 import os
 import json
 import csv
+import time
 from collections import defaultdict, OrderedDict
 import matplotlib.pyplot as plt
 import shutil
+
+def save_mix(weights, symbols, performance):
+    os.makedirs("output/mixes", exist_ok=True)
+    timestamp = time.strftime("%Y%m%d_%H%M%S")
+    filename = f"output/mixes/saved_mix_{timestamp}.json"
+    data = {
+        "symbols": symbols,
+        "weights": weights,
+        "performance": performance
+    }
+    with open(filename, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=2)
+    print(f"✅ ترکیب ذخیره شد: {filename}")
 
 RESULTS_CSV = "output/results.csv"
 MIX_DIR = "output/mix"
