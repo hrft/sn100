@@ -1,5 +1,7 @@
 import pandas as pd
-import numpy as np
+
+def ema(series, span):
+    return series.ewm(span=span, adjust=False).mean()
 
 def calculate_rsi(prices, window=14):
     delta = prices.diff()
@@ -14,22 +16,25 @@ def calculate_rsi(prices, window=14):
 def calculate_ma(prices, window=5):
     return prices.rolling(window=window).mean()
 
-def calculate_atr(highs, lows, closes, window=14):
-    tr1 = highs - lows
-    tr2 = abs(highs - closes.shift())
-    tr3 = abs(lows - closes.shift())
-    tr = pd.concat([tr1, tr2, tr3], axis=1).max(axis=1)
-    atr = tr.rolling(window=window).mean()
-    return atr
-
 def calculate_volatility(prices, window=10):
     return prices.pct_change().rolling(window=window).std()
 
+def calculate_macd(prices, fast=12, slow=26, signal=9):
+    macd_line = ema(prices, fast) - ema(prices, slow)
+    signal_line = ema(macd_line, signal)
+    hist = macd_line - signal_line
+    return macd_line, signal_line, hist
+
 def enrich_dataframe(df):
     df = df.copy()
-    df["rsi"] = calculate_rsi(df["price"])
-    df["ma_fast"] = calculate_ma(df["price"], window=5)
-    df["ma_slow"] = calculate_ma(df["price"], window=20)
-    df["volatility"] = calculate_volatility(df["price"])
+    prices = df["price"]
+    df["rsi"] = calculate_rsi(prices)
+    df["ma_fast"] = calculate_ma(prices, window=5)
+    df["ma_slow"] = calculate_ma(prices, window=20)
+    df["volatility"] = calculate_volatility(prices)
+    macd_line, signal_line, hist = calculate_macd(prices)
+    df["macd"] = macd_line
+    df["macd_signal"] = signal_line
+    df["macd_hist"] = hist
     return df
 

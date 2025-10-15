@@ -1,8 +1,0 @@
-key,value
-Time,now
-Symbol,SOLUSDT
-Signal,entry
-Entry,196.39800000000002
-Stop,191.7794
-Target,199.8508
-Chart,signals/SOLUSDT_chart.html

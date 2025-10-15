@@ -1,4 +1,6 @@
+requests
 pandas
 matplotlib
+flask
 ta
 ta-lib

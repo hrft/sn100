@@ -1,54 +1,60 @@
-import csv
-from collections import defaultdict
+import os
+import pandas as pd
+import matplotlib.pyplot as plt
+from snl100.config import OUTPUT_LOG
 
-def analyze_results(input_file="output/results.csv"):
-    symbol_stats = defaultdict(lambda: {
-        "total": 0,
-        "hit_target": 0,
-        "hit_stop": 0,
-        "neutral": 0,
-        "total_profit": 0.0
-    })
+CHART_FILE = "output/performance_chart.png"
 
-    with open(input_file, newline="", encoding="utf-8") as f:
-        reader = csv.DictReader(f)
-        for row in reader:
-            symbol = row["Symbol"]
-            result = row["Result"]
-            profit = float(row["Profit"])
+def analyze_performance():
+    if not os.path.exists(OUTPUT_LOG):
+        print(f"❌ فایل لاگ پیدا نشد: {OUTPUT_LOG}")
+        return
 
-            symbol_stats[symbol]["total"] += 1
-            symbol_stats[symbol][result] += 1
-            symbol_stats[symbol]["total_profit"] += profit
+    df = pd.read_csv(OUTPUT_LOG)
 
-    # ذخیره‌ی خروجی نمادها
-    with open("output/symbol_summary.csv", "w", newline="", encoding="utf-8") as f:
-        writer = csv.writer(f)
-        writer.writerow(["Symbol", "total_signals", "hit_target", "hit_stop", "neutral", "avg_profit", "total_profit", "success_rate_%"])
-        for symbol, stats in symbol_stats.items():
-            total = stats["total"]
-            hit_target = stats["hit_target"]
-            hit_stop = stats["hit_stop"]
-            neutral = stats["neutral"]
-            total_profit = stats["total_profit"]
-            avg_profit = round(total_profit / total, 4) if total else 0
-            success_rate = round((hit_target / total) * 100, 2) if total else 0
-            writer.writerow([symbol, total, hit_target, hit_stop, neutral, avg_profit, round(total_profit, 4), success_rate])
+    # اگر profit نبود، از تخمینی استفاده کن
+    if "profit" in df.columns:
+        df["profit_final"] = pd.to_numeric(df["profit"], errors="coerce").fillna(0.0)
+    else:
+        def _estimate(row):
+            sig = str(row.get("signal","hold")).lower()
+            price = row.get("price"); target = row.get("target"); size = row.get("position_size")
+            try:
+                price = float(price); target = float(target); size = float(size)
+            except Exception:
+                return 0.0
+            if sig == "buy": return (target - price) * size
+            if sig == "sell": return (price - target) * size
+            return 0.0
+        df["profit_final"] = df.apply(_estimate, axis=1)
 
-    # محاسبه‌ی آمار کلی
-    total_signals = sum(stats["total"] for stats in symbol_stats.values())
-    total_profit = sum(stats["total_profit"] for stats in symbol_stats.values())
-    avg_profit = round(total_profit / total_signals, 4) if total_signals else 0
-    total_hit_target = sum(stats["hit_target"] for stats in symbol_stats.values())
-    success_rate = round((total_hit_target / total_signals) * 100, 2) if total_signals else 0
+    valid = df[df["signal"].isin(["buy","sell"])].copy()
+    if valid.empty:
+        print("⚠️ سیگنال خرید/فروش کافی در لاگ نیست.")
+        return
 
-    with open("output/overall_summary.csv", "w", newline="", encoding="utf-8") as f:
-        writer = csv.writer(f)
-        writer.writerow(["Total Signals", "Overall Avg Profit", "Overall Total Profit", "Overall Success Rate (%)"])
-        writer.writerow([total_signals, avg_profit, round(total_profit, 4), success_rate])
+    valid["cumulative_profit"] = valid["profit_final"].cumsum()
+    total = len(valid)
+    avg_profit = valid["profit_final"].mean()
+    best = valid.loc[valid["profit_final"].idxmax()]
+    worst = valid.loc[valid["profit_final"].idxmin()]
 
-    print("✅ تحلیل عملکرد کامل شد. خروجی‌ها در output/symbol_summary.csv و output/overall_summary.csv ذخیره شدند.")
+    print("📊 گزارش عملکرد (USDT)")
+    print("-"*40)
+    print(f"تعداد سیگنال‌ها: {total}")
+    print(f"میانگین سود هر سیگنال: {avg_profit:.4f}")
+    print(f"بهترین: {best['symbol']} {best['signal']} → {best['profit_final']:.4f} در {best['time']}")
+    print(f"بدترین: {worst['symbol']} {worst['signal']} → {worst['profit_final']:.4f} در {worst['time']}")
+
+    plt.figure(figsize=(10,5))
+    plt.plot(valid["cumulative_profit"], label="Cumulative profit", linewidth=2)
+    plt.title("Equity curve (USDT)")
+    plt.xlabel("Signal index")
+    plt.ylabel("Profit (USDT)")
+    plt.grid(True); plt.legend(); plt.tight_layout()
+    plt.savefig(CHART_FILE)
+    print(f"✅ نمودار ذخیره شد: {CHART_FILE}")
 
 if __name__ == "__main__":
-    analyze_results()
+    analyze_performance()
 

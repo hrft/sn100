@@ -1,4 +1,8 @@
 # تنظیمات قابل تغییر برای snl100
+USDT_SYMBOLS = ["BTCUSDT", "ETHUSDT", "BNBUSDT", "XRPUSDT", "DOGEUSDT"]
+REFRESH_SECONDS = 1
+OUTPUT_LOG = "output/forward_test_log.csv"
+DASHBOARD_PORT = 5050
 
 # مسیرها
 INPUT_DIR = "output/signals"
