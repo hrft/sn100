@@ -1,16 +1,17 @@
 import os, csv, time
 from datetime import datetime
-
-from snl100.config import USDT_SYMBOLS, OUTPUT_LOG, REFRESH_SECONDS
 from snl100.signal_pipeline import get_signal
 from snl100.risk_manager import position_size, risk_reward
+
+SYMBOLS = ["BTCUSDT", "ETHUSDT", "BNBUSDT", "XRPUSDT", "DOGEUSDT"]
+LOG_FILE = "output/forward_test_log.csv"
 
 def ensure_dirs():
     os.makedirs("output", exist_ok=True)
 
 def log_signal(row):
-    write_header = not os.path.exists(OUTPUT_LOG)
-    with open(OUTPUT_LOG, "a", newline="", encoding="utf-8") as f:
+    write_header = not os.path.exists(LOG_FILE)
+    with open(LOG_FILE, "a", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=row.keys())
         if write_header:
             writer.writeheader()
@@ -20,7 +21,7 @@ def run_forward_test(balance=1000.0, steps=200):
     ensure_dirs()
     print("🚀 تست زنده روی جفت‌ارزهای دلاری (USDT pairs)...")
     for _ in range(steps):
-        for symbol in USDT_SYMBOLS:
+        for symbol in SYMBOLS:
             s = get_signal(symbol)
             if s["price"] is None or s["target"] is None or s["stop"] is None:
                 rr, risk_abs, reward_abs = 0, 0, 0
@@ -29,7 +30,6 @@ def run_forward_test(balance=1000.0, steps=200):
                 rr, risk_abs, reward_abs = risk_reward(s["price"], s["target"], s["stop"])
                 size = position_size(balance, s["price"], s["stop"], risk_pct=0.01)
                 expected_loss = round(size * risk_abs, 6)
-                # سود تخمینی ساده تا تارگت
                 if s["signal"] == "buy":
                     profit = (s["target"] - s["price"]) * size
                 elif s["signal"] == "sell":
@@ -53,7 +53,7 @@ def run_forward_test(balance=1000.0, steps=200):
             }
             log_signal(row)
             print(f"[{row['time']}] {row['symbol']} {row['signal']} via {row['strategy']} RR:{rr} size:{size} profit:{profit:.4f}")
-        time.sleep(REFRESH_SECONDS)
+        time.sleep(1)
     print("✅ تست زنده کامل شد.")
 
 if __name__ == "__main__":
