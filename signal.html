@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="fa">
+<head>
+  <meta charset="utf-8">
+  <title>snl100 Signals Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: sans-serif; margin: 20px; background: #0f1220; color: #e8e8e8; }
+    h1, h2 { margin: 0 0 10px; }
+    .controls { display:flex; gap:10px; margin:10px 0 20px; }
+    select, input { padding:6px; border-radius:6px; border:1px solid #333; background:#161a2e; color:#e8e8e8; }
+    table { width:100%; border-collapse: collapse; margin-top:10px; }
+    th, td { border-bottom: 1px solid #333; padding:8px; text-align: left; }
+    th { background:#161a2e; position: sticky; top:0; }
+    .pos { color:#5cd65c; }
+    .neg { color:#ff6666; }
+    #chart { width:100%; height:380px; background:#161a2e; border-radius:8px; margin-top:15px; }
+  </style>
+</head>
+<body>
+  <h1>Signals Dashboard</h1>
+  <div class="controls">
+    <label>Symbol:
+      <select id="symbolFilter"><option value="">All</option></select>
+    </label>
+    <label>Type:
+      <select id="typeFilter">
+        <option value="">All</option>
+        <option value="LONG">LONG</option>
+        <option value="SHORT">SHORT</option>
+      </select>
+    </label>
+    <label>Min profit %:
+      <input id="minProfit" type="number" step="0.01" placeholder="0">
+    </label>
+    <button id="resetBtn">Reset</button>
+  </div>
+
+  <h2>Signals table</h2>
+  <table id="signalsTable">
+    <thead>
+      <tr>
+        <th>Symbol</th><th>Type</th><th>Entry time</th><th>Entry</th><th>Exit</th><th>Stop</th>
+        <th>Position</th><th>Capital</th><th>Profit $</th><th>Profit %</th><th>Reason</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <h2>Profit % distribution</h2>
+  <canvas id="chart"></canvas>
+
+  <script>
+    async function loadCSV(path) {
+      const res = await fetch(path);
+      const text = await res.text();
+      return parseCSV(text);
+    }
+
+    function parseCSV(csv) {
+      const lines = csv.trim().split(/\r?\n/);
+      const headers = lines[0].split(",");
+      return lines.slice(1).map(line => {
+        const cols = line.split(",");
+        const obj = {};
+        headers.forEach((h, i) => obj[h] = cols[i]);
+        return obj;
+      });
+    }
+
+    function formatNum(n, digits=2) {
+      const x = Number(n);
+      return isNaN(x) ? "-" : x.toFixed(digits);
+    }
+
+    function renderTable(rows) {
+      const tbody = document.querySelector("#signalsTable tbody");
+      tbody.innerHTML = "";
+      rows.forEach(r => {
+        const tr = document.createElement("tr");
+        const pct = Number(r.profit_pct);
+        tr.innerHTML = `
+          <td>${r.symbol}</td>
+          <td>${r.type}</td>
+          <td>${r.entry_time}</td>
+          <td>${formatNum(r.entry_price,6)}</td>
+          <td>${formatNum(r.exit_price,6)}</td>
+          <td>${formatNum(r.stop_loss,6)}</td>
+          <td>${formatNum(r.position_size,4)}</td>
+          <td>${formatNum(r.capital_used,2)}</td>
+          <td class="${pct>=0?'pos':'neg'}">${formatNum(r.profit_abs,2)}</td>
+          <td class="${pct>=0?'pos':'neg'}">${formatNum(r.profit_pct,2)}</td>
+          <td>${r.reason||""}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function renderChart(rows) {
+      const canvas = document.getElementById("chart");
+      const ctx = canvas.getContext("2d");
+      const w = canvas.width = canvas.clientWidth;
+      const h = canvas.height = canvas.clientHeight;
+      ctx.clearRect(0,0,w,h);
+
+      const values = rows.map(r => Number(r.profit_pct)).filter(v => !isNaN(v));
+      if (!values.length) {
+        ctx.fillStyle = "#aaa"; ctx.fillText("No data", 20, 20); return;
+      }
+      const min = Math.min(...values), max = Math.max(...values);
+      const pad = 30;
+      function x(i){ return pad + (i/(values.length-1))*(w-2*pad); }
+      function y(v){ return h-pad - ((v-min)/(max-min))*(h-2*pad); }
+
+      // axes
+      ctx.strokeStyle = "#888"; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(pad, pad); ctx.lineTo(pad, h-pad); ctx.lineTo(w-pad, h-pad); ctx.stroke();
+
+      // line
+      ctx.strokeStyle = "#4fc3f7"; ctx.lineWidth = 2; ctx.beginPath();
+      values.forEach((v,i)=>{ const xi=x(i), yi=y(v); if(i===0) ctx.moveTo(xi,yi); else ctx.lineTo(xi,yi); });
+      ctx.stroke();
+
+      // points
+      values.forEach((v,i)=>{ const xi=x(i), yi=y(v); ctx.fillStyle = v>=0 ? "#5cd65c" : "#ff6666"; ctx.beginPath(); ctx.arc(xi, yi, 3, 0, 2*Math.PI); ctx.fill(); });
+
+      // labels
+      ctx.fillStyle = "#ccc"; ctx.fillText(`min ${min.toFixed(2)}%`, 40, 20);
+      ctx.fillText(`max ${max.toFixed(2)}%`, w-120, 20);
+    }
+
+    function applyFilters(rows) {
+      const sym = document.getElementById("symbolFilter").value;
+      const typ = document.getElementById("typeFilter").value;
+      const minP = Number(document.getElementById("minProfit").value || 0);
+      return rows.filter(r => {
+        const okSym = !sym || r.symbol === sym;
+        const okTyp = !typ || r.type === typ;
+        const okMin = Number(r.profit_pct||"-9999") >= minP;
+        return okSym && okTyp && okMin;
+      });
+    }
+
+    function populateSymbolFilter(rows) {
+      const sel = document.getElementById("symbolFilter");
+      const syms = Array.from(new Set(rows.map(r => r.symbol))).sort();
+      syms.forEach(s => {
+        const opt = document.createElement("option");
+        opt.value = s; opt.textContent = s; sel.appendChild(opt);
+      });
+    }
+
+    let allRows = [];
+    async function init() {
+      try {
+        allRows = await loadCSV("data/signals.csv");
+        populateSymbolFilter(allRows);
+        const filtered = applyFilters(allRows);
+        renderTable(filtered);
+        renderChart(filtered);
+      } catch (e) {
+        console.error(e);
+        document.body.insertAdjacentHTML("beforeend", "<p>Failed to load signals.csv. Ensure it exists under data/.</p>");
+      }
+
+      document.getElementById("symbolFilter").addEventListener("change", () => {
+        const f = applyFilters(allRows); renderTable(f); renderChart(f);
+      });
+      document.getElementById("typeFilter").addEventListener("change", () => {
+        const f = applyFilters(allRows); renderTable(f); renderChart(f);
+      });
+      document.getElementById("minProfit").addEventListener("input", () => {
+        const f = applyFilters(allRows); renderTable(f); renderChart(f);
+      });
+      document.getElementById("resetBtn").addEventListener("click", () => {
+        document.getElementById("symbolFilter").value = "";
+        document.getElementById("typeFilter").value = "";
+        document.getElementById("minProfit").value = "";
+        const f = applyFilters(allRows); renderTable(f); renderChart(f);
+      });
+    }
+    init();
+  </script>
+</body>
+</html>
+

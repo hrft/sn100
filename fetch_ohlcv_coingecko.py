@@ -1,42 +1,62 @@
-# fetch_ohlcv_coingecko.py
 import requests
-import csv
+import pandas as pd
+import os
 from datetime import datetime
 
-symbol = "bitcoin"  # یا ethereum, dogecoin, ...
-vs_currency = "usd"
-days = "1"  # چند روز گذشته (1، 7، 30، max)
-interval = "minute"  # یا hourly, daily
-output_file = "data/ohlcv.csv"
+# نگاشت نمادهای دلاری به شناسه‌های Coingecko
+symbol_map = {
+    "BTCUSDT": "bitcoin",
+    "ETHUSDT": "ethereum",
+    "DOGEUSDT": "dogecoin",
+    "XRPUSDT": "ripple",
+    "TRXUSDT": "tron",
+    "SHIBUSDT": "shiba-inu",
+    "BNBUSDT": "binancecoin",
+    "PEPEUSDT": "pepe"
+}
 
-def fetch_and_save():
-    url = f"https://api.coingecko.com/api/v3/coins/{symbol}/market_chart"
+vs_currency = "usd"
+days = 7  # چند روز گذشته
+interval = "hourly"  # تایم‌فریم: 'hourly' یا 'daily'
+output_dir = "data"
+
+def fetch_ohlcv(coin_id):
+    url = f"https://api.coingecko.com/api/v3/coins/{coin_id}/market_chart"
     params = {
         "vs_currency": vs_currency,
         "days": days,
         "interval": interval
     }
-    print(f"📡 دریافت داده از Coingecko برای {symbol}...")
-    r = requests.get(url, params=params)
+    r = requests.get(url, params=params, timeout=10)
+    r.raise_for_status()
     data = r.json()
 
     prices = data.get("prices", [])
     volumes = data.get("total_volumes", [])
 
-    with open(output_file, "w", newline="", encoding="utf-8") as f:
-        writer = csv.writer(f)
-        writer.writerow(["timestamp", "symbol", "open", "high", "low", "close", "volume"])
-        for i in range(1, len(prices)):
-            ts = datetime.utcfromtimestamp(prices[i][0] / 1000).strftime("%Y-%m-%d %H:%M:%S")
-            open_ = prices[i-1][1]
-            close = prices[i][1]
-            high = max(open_, close)
-            low = min(open_, close)
-            volume = volumes[i][1] if i < len(volumes) else 0
-            writer.writerow([ts, symbol.upper(), round(open_, 2), round(high, 2), round(low, 2), round(close, 2), round(volume, 2)])
+    df = pd.DataFrame(prices, columns=["timestamp", "Close"])
+    df["Volume"] = [v[1] for v in volumes]
+    df["Date"] = pd.to_datetime(df["timestamp"], unit="ms")
+    df["Open"] = df["Close"].shift(1)
+    df["High"] = df["Close"].rolling(2).max()
+    df["Low"] = df["Close"].rolling(2).min()
+    df = df[["Date", "Open", "High", "Low", "Close", "Volume"]]
+    df = df.dropna().astype(float)
+    return df
 
-    print(f"✅ ذخیره شد: {output_file}")
+def main():
+    os.makedirs(output_dir, exist_ok=True)
+    for symbol, coin_id in symbol_map.items():
+        print(f"📡 دریافت داده برای {symbol} از Coingecko...")
+        try:
+            df = fetch_ohlcv(coin_id)
+            df["symbol"] = symbol
+            output_path = os.path.join(output_dir, f"ohlcv_{symbol}.csv")
+            df.to_csv(output_path, index=False)
+            print(f"✅ ذخیره شد: {output_path}")
+        except Exception as e:
+            print(f"❌ خطا در دریافت {symbol}: {e}")
 
 if __name__ == "__main__":
-    fetch_and_save()
+    main()
 
