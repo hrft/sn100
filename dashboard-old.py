@@ -4,7 +4,6 @@
 import pandas as pd
 import streamlit as st
 import plotly.graph_objects as go
-import os
 
 # -----------------------------
 # بارگذاری داده‌ها
@@ -98,45 +97,38 @@ def daily_report(df):
 # -----------------------------
 # رابط کاربری Streamlit
 # -----------------------------
+st.set_page_config(page_title="sn1100 Signals Dashboard", layout="wide")
+st.title("📊 داشبورد سیگنال sn1100")
 
-st.set_page_config(page_title="snl100 داشبورد سیگنال", layout="wide")
-st.title("📊 snl100 داشبورد سیگنال")
-st.subheader("گزارش روزانه")
+df = load_signals()
 
-# مسیر فایل سیگنال‌ها
-SIGNAL_FILE = "data/signals.csv"
+if df.empty:
+    st.warning("هیچ سیگنالی یافت نشد. ابتدا اسکریپت تولید سیگنال را اجرا کنید.")
+else:
+    # گزارش روزانه
+    st.subheader("📌 گزارش روزانه")
+    st.markdown(daily_report(df))
 
-# بررسی وجود فایل
-if not os.path.exists(SIGNAL_FILE):
-    st.warning("⚠️ فایل سیگنال‌ها پیدا نشد.")
-    st.stop()
+    # انتخاب شبکه یا نماد
+    symbols = df["symbol"].unique().tolist()
+    selected_symbol = st.selectbox("🔹 انتخاب نماد", symbols)
 
-# خواندن داده‌ها
-df = pd.read_csv(SIGNAL_FILE)
+    # فیلتر بر اساس نماد
+    df_symbol = df[df["symbol"] == selected_symbol]
 
-# بررسی ستون‌های جدید
-if "entry_date" not in df.columns or "entry_hour" not in df.columns:
-    st.error("❌ ستون‌های entry_date و entry_hour در فایل موجود نیستند.")
-    st.stop()
+    # انتخاب نوع سیگنال (ستون عددی)
+    numeric_cols = [c for c in df_symbol.columns if df_symbol[c].dtype != "object" and c != "entry_time"]
+    signal_type = st.selectbox("🔹 انتخاب ستون برای محور Y", numeric_cols)
 
-# تبدیل به datetime برای مرتب‌سازی
-df["entry_datetime"] = pd.to_datetime(df["entry_date"] + " " + df["entry_hour"], errors="coerce")
-df = df.sort_values(by="entry_datetime", ascending=False)
+    # انتخاب متریک اضافی
+    deterministic_metric = st.selectbox("🔹 متریک اضافی (اختیاری)", [""] + numeric_cols)
+    deterministic_metric = deterministic_metric if deterministic_metric else None
 
-# انتخاب ستون‌های نمایشی
-cols = [
-    "symbol", "type", "entry_date", "entry_hour",
-    "entry_price", "exit_price", "stop_loss",
-    "profit_abs", "profit_pct", "reason"
-]
+    # رسم نمودار
+    fig = plot_signals(df_symbol, signal_type, deterministic_metric)
+    st.plotly_chart(fig, use_container_width=True)
 
-# نمایش جدول
-st.dataframe(df[cols], use_container_width=True)
-
-# نمایش آمار خلاصه
-st.markdown("### 📈 آمار کلی")
-st.write(f"تعداد سیگنال‌ها: {len(df)}")
-st.write(f"تعداد LONG: {len(df[df['type'] == 'LONG'])}")
-st.write(f"تعداد SHORT: {len(df[df['type'] == 'SHORT'])}")
-st.write(f"میانگین سود درصدی: {df['profit_pct'].astype(float).mean():.2%}")
+    # نمایش جدول
+    st.subheader("📋 جدول سیگنال‌ها")
+    st.dataframe(df_symbol)
 

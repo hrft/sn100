@@ -1,26 +1,47 @@
 # fetch_ohlcv.py
-import ccxt
-import csv
-from datetime import datetime
+import os
+import requests
+import pandas as pd
 
-# تنظیمات
-exchange = ccxt.binance()  # برای Nobitex باید API جداگانه استفاده بشه
-symbol = 'BTC/USDT'
-timeframe = '5m'  # تایم‌فریم کندل‌ها
-limit = 100       # تعداد کندل‌ها
-output_file = 'data/ohlcv.csv'
+# نمادها
+symbols = ['BTC', 'ETH', 'BNB', 'SHIB', 'PEPE']
 
-def fetch_and_save():
-    print(f"📡 دریافت داده برای {symbol} از {exchange.name}...")
-    ohlcv = exchange.fetch_ohlcv(symbol, timeframe=timeframe, limit=limit)
-    with open(output_file, 'w', newline='', encoding='utf-8') as f:
-        writer = csv.writer(f)
-        writer.writerow(['timestamp', 'symbol', 'open', 'high', 'low', 'close', 'volume'])
-        for row in ohlcv:
-            ts = datetime.utcfromtimestamp(row[0] / 1000).strftime('%Y-%m-%d %H:%M:%S')
-            writer.writerow([ts, symbol.replace('/', ''), *row[1:]])
-    print(f"✅ ذخیره شد: {output_file}")
+# مسیر خروجی: پوشه data کنار همین فایل
+output_dir = os.path.join(os.path.dirname(__file__), "data")
+os.makedirs(output_dir, exist_ok=True)
 
-if __name__ == '__main__':
-    fetch_and_save()
+# آدرس API
+base_url = 'https://min-api.cryptocompare.com/data/v2/histohour'
+
+def fetch_ohlcv(symbol):
+    params = {
+        'fsym': symbol,
+        'tsym': 'USDT',
+        'limit': 199
+    }
+    try:
+        response = requests.get(base_url, params=params)
+        data = response.json()
+        if data['Response'] != 'Success':
+            print(f"❌ خطا در دریافت داده برای {symbol}: {data.get('Message', 'Unknown error')}")
+            return
+
+        rows = data['Data']['Data']
+        df = pd.DataFrame(rows)
+        df['Date'] = pd.to_datetime(df['time'], unit='s')
+        df['symbol'] = symbol
+        df = df[['Date', 'open', 'high', 'low', 'close', 'volumefrom', 'symbol']]
+        df.columns = ['Date', 'Open', 'High', 'Low', 'Close', 'Volume', 'symbol']
+
+        filename = os.path.join(output_dir, f"ohlcv_{symbol}.csv")
+        df.to_csv(filename, index=False, encoding="utf-8")
+        print(f"✅ ذخیره شد: {filename}")
+
+    except Exception as e:
+        print(f"⚠️ خطا در پردازش {symbol}: {e}")
+
+# اجرای اصلی
+if __name__ == "__main__":
+    for sym in symbols:
+        fetch_ohlcv(sym)
 
