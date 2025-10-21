@@ -9,7 +9,7 @@ import pandas as pd
 # تنظیمات
 # -----------------------------
 BASE_DIR = os.path.dirname(__file__)
-DATA_DIR = os.path.join(BASE_DIR, "..", "data")
+DATA_DIR = os.path.join(BASE_DIR, "data")
 OUTPUT_FILE = os.path.join(DATA_DIR, "signals.csv")
 
 os.makedirs(DATA_DIR, exist_ok=True)
@@ -17,7 +17,7 @@ os.makedirs(DATA_DIR, exist_ok=True)
 CAPITAL_USD = 500.0
 RISK_PCT = 0.01
 R_MULTIPLIER = 1.5
-VOL_WINDOW = 20
+VOL_WINDOW = 10   # ساده‌تر
 
 # -----------------------------
 # ابزارهای کمکی
@@ -35,11 +35,11 @@ def load_ohlcv_frames() -> dict:
         if "Date" in df.columns:
             df["Date"] = pd.to_datetime(df["Date"], utc=False)
 
-        # استفاده از VolumeTo
-        if "VolumeTo" in df.columns:
-            df["Volume"] = pd.to_numeric(df["VolumeTo"], errors="coerce")
-        elif "VolumeFrom" in df.columns:
+        # استفاده از VolumeFrom
+        if "VolumeFrom" in df.columns:
             df["Volume"] = pd.to_numeric(df["VolumeFrom"], errors="coerce")
+        elif "Volume" in df.columns:
+            df["Volume"] = pd.to_numeric(df["Volume"], errors="coerce")
         else:
             continue
 
@@ -53,7 +53,7 @@ def load_ohlcv_frames() -> dict:
     return frames
 
 # -----------------------------
-# منطق تولید سیگنال (بازسازی اصلی)
+# منطق تولید سیگنال مینیمال
 # -----------------------------
 def generate_signals_for_symbol(df: pd.DataFrame, symbol: str) -> list:
     signals = []
@@ -72,19 +72,15 @@ def generate_signals_for_symbol(df: pd.DataFrame, symbol: str) -> list:
         low = safe_float(row["Low"])
         vol_ma = safe_float(row["vol_ma"])
         vol = safe_float(row["Volume"])
-        prev_high = safe_float(prev["High"])
-        prev_low = safe_float(prev["Low"])
 
-        if None in (close, high, low, vol_ma, vol, prev_high, prev_low):
+        if None in (close, high, low, vol_ma, vol):
             continue
 
         vol_ok = vol > vol_ma
-        breakout_ok = close > prev_high
-        reversal_ok = close < prev_low
-        hh_hl = (high >= prev_high) and (low >= prev_low)
-        ll_lh = (high <= prev_high) and (low <= prev_low)
+        breakout_ok = (close > prev["High"])
+        reversal_ok = (close < prev["Low"])
 
-        if vol_ok and breakout_ok and hh_hl:
+        if vol_ok and breakout_ok:
             stop_loss = low
             risk_per_unit = max(close - stop_loss, 1e-12)
             target = close + R_MULTIPLIER * risk_per_unit
@@ -97,10 +93,10 @@ def generate_signals_for_symbol(df: pd.DataFrame, symbol: str) -> list:
                 "exit_price": target,
                 "stop_loss": stop_loss,
                 "capital_used": capital_used,
-                "reason": "Breakout + Vol>MA + HH/HL"
+                "reason": f"Breakout + Vol>MA"
             })
 
-        elif vol_ok and reversal_ok and ll_lh:
+        elif vol_ok and reversal_ok:
             stop_loss = high
             risk_per_unit = max(stop_loss - close, 1e-12)
             target = close - R_MULTIPLIER * risk_per_unit
@@ -113,7 +109,7 @@ def generate_signals_for_symbol(df: pd.DataFrame, symbol: str) -> list:
                 "exit_price": target,
                 "stop_loss": stop_loss,
                 "capital_used": capital_used,
-                "reason": "Reversal + Vol>MA + LL/LH"
+                "reason": f"Reversal + Vol>MA"
             })
 
     return signals

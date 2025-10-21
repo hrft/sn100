@@ -103,37 +103,30 @@ st.set_page_config(page_title="snl100 داشبورد سیگنال", layout="wide
 st.title("📊 snl100 داشبورد سیگنال")
 st.subheader("گزارش روزانه")
 
-# مسیر فایل سیگنال‌ها
-SIGNAL_FILE = "data/signals.csv"
+DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
+SIGNAL_FILE = os.path.join(DATA_DIR, "signals.csv")
 
-# بررسی وجود فایل
 if not os.path.exists(SIGNAL_FILE):
     st.warning("⚠️ فایل سیگنال‌ها پیدا نشد.")
     st.stop()
 
-# خواندن داده‌ها
 df = pd.read_csv(SIGNAL_FILE)
 
-# بررسی ستون‌های جدید
 if "entry_date" not in df.columns or "entry_hour" not in df.columns:
     st.error("❌ ستون‌های entry_date و entry_hour در فایل موجود نیستند.")
     st.stop()
 
-# تبدیل به datetime برای مرتب‌سازی
 df["entry_datetime"] = pd.to_datetime(df["entry_date"] + " " + df["entry_hour"], errors="coerce")
 df = df.sort_values(by="entry_datetime", ascending=False)
 
-# انتخاب ستون‌های نمایشی
 cols = [
-    "symbol", "type", "entry_date", "entry_hour",
-    "entry_price", "exit_price", "stop_loss",
-    "profit_abs", "profit_pct", "reason"
+    "symbol","type","entry_date","entry_hour",
+    "entry_price","exit_price","stop_loss",
+    "profit_abs","profit_pct","reason"
 ]
 
-# نمایش جدول
 st.dataframe(df[cols], use_container_width=True)
 
-# نمایش آمار خلاصه
 st.markdown("### 📈 آمار کلی")
 st.write(f"تعداد سیگنال‌ها: {len(df)}")
 st.write(f"تعداد LONG: {len(df[df['type'] == 'LONG'])}")

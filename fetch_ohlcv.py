@@ -1,4 +1,3 @@
-# fetch_ohlcv.py
 import os
 import requests
 import pandas as pd
@@ -30,8 +29,10 @@ def fetch_ohlcv(symbol):
         df = pd.DataFrame(rows)
         df['Date'] = pd.to_datetime(df['time'], unit='s')
         df['symbol'] = symbol
-        df = df[['Date', 'open', 'high', 'low', 'close', 'volumefrom', 'symbol']]
-        df.columns = ['Date', 'Open', 'High', 'Low', 'Close', 'Volume', 'symbol']
+
+        # ذخیره هر دو ستون حجم
+        df = df[['Date', 'open', 'high', 'low', 'close', 'volumefrom', 'volumeto', 'symbol']]
+        df.columns = ['Date', 'Open', 'High', 'Low', 'Close', 'VolumeFrom', 'VolumeTo', 'symbol']
 
         filename = os.path.join(output_dir, f"ohlcv_{symbol}.csv")
         df.to_csv(filename, index=False, encoding="utf-8")
